@@ -16,14 +16,13 @@ using System.Windows.Shapes;
 namespace ToDoProject
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for EditTask.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class EditTask : UserControl
     {
-        public MainWindow()
+        public EditTask()
         {
             InitializeComponent();
-            MainFrame.Content = new Page1(this);
         }
     }
 }

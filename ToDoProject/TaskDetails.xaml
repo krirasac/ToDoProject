@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="ToDoProject.TaskDetails"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ToDoProject"
+             mc:Ignorable="d" 
+             d:DesignHeight="820" d:DesignWidth="1420">
+    <Grid OpacityMask="Black">
+        <Canvas Background="White" HorizontalAlignment="Left" Height="415" Margin="289,188,0,0" VerticalAlignment="Top" Width="858">
+            <Label Content="Task Name" Canvas.Left="174" Canvas.Top="40" HorizontalAlignment="Center" VerticalAlignment="Top" Width="225" Height="76" FontSize="22" VerticalContentAlignment="Center"/>
+            <Button x:Name="BackBTN" Content="Back" Height="59" Canvas.Left="50" Canvas.Top="67" Width="79" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <TextBlock Height="60" Canvas.Left="174" TextWrapping="Wrap" Text="Description" Canvas.Top="118" Width="538" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Rectangle Height="152" Stroke="Black" Width="158" HorizontalAlignment="Center" Canvas.Left="154" Canvas.Top="216" VerticalAlignment="Top"/>
+            <Button x:Name="MoreBTN" Content="More" Height="59" Canvas.Left="735" Canvas.Top="67" Width="79" HorizontalAlignment="Left" VerticalAlignment="Center" Click="MoreBTN_Click"/>
+            <Rectangle Height="152" Stroke="Black" Width="158" Canvas.Left="359" Canvas.Top="216" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Rectangle Height="152" Stroke="Black" Width="158" Canvas.Left="567" Canvas.Top="216" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Image x:Name="ReminderIMG" Height="85" Canvas.Left="193" Canvas.Top="233" Width="88" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Image x:Name="CategoryIMG" Height="85" Canvas.Left="352" Canvas.Top="238" Width="88" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Image x:Name="PriorityIMG" Height="85" Canvas.Left="602" Canvas.Top="233" Width="88" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Label x:Name="DateTimeLB" Content="DateTime" Height="28" Width="80" HorizontalAlignment="Center" Canvas.Left="193" Canvas.Top="320" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+            <Label x:Name="CategoryLB" Content="Category" Height="28" Width="79" Canvas.Left="401" Canvas.Top="320" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Label x:Name="PriorityLB" Content="Priority" Height="28" Width="80" Canvas.Left="610" Canvas.Top="320" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        </Canvas>
+        <Canvas x:Name="MoreMenu" Background="White" HorizontalAlignment="Left" Height="184" Margin="1088,68,0,0" VerticalAlignment="Top" Width="219" Visibility="Hidden">
+            <Button Content="Mark as Done" Height="38" Canvas.Left="18" Canvas.Top="26" Width="187" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15"/>
+            <Button Content="Edit Task" Height="36" Canvas.Left="18" Canvas.Top="74" Width="187" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15"/>
+            <Button Content="Delete Task" Height="36" Canvas.Left="18" Canvas.Top="122" Width="187" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15"/>
+        </Canvas>
+    </Grid>
+</UserControl>
