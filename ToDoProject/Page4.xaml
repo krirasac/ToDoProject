@@ -1,0 +1,117 @@
+﻿<Page x:Class="ToDoProject.Page4"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ToDoProject"
+      mc:Ignorable="d" 
+      d:DesignHeight="820" d:DesignWidth="1420"
+      Title="Page4">
+
+    <Page.Resources>
+        <Style x:Key="CircleBorderStyle" TargetType="Border">
+            <Setter Property="CornerRadius" Value="50"/>
+            <Setter Property="Background" Value="Gray"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="DarkGray"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="PlusButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <TextBlock x:Name="TextBlockContent"
+                           Text="{TemplateBinding Content}" 
+                           Foreground="{TemplateBinding Foreground}" 
+                           FontSize="{TemplateBinding FontSize}"
+                           TextDecorations="None"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="TextBlockContent" Property="Foreground" Value="Black"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="NavButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="40"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <TextBlock x:Name="NavButtonText"
+                   Text="{TemplateBinding Content}" 
+                   Foreground="{TemplateBinding Foreground}" 
+                   FontSize="{TemplateBinding FontSize}"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1170"/>
+        </Grid.ColumnDefinitions>
+
+        <Viewbox Stretch="Uniform" Margin="1,123,309,10" Grid.Column="1">
+            <Calendar x:Name="cal_ToDoCal"
+          Background="White"
+          Foreground="Black"
+          DisplayMode="Month"
+          IsTodayHighlighted="True"
+          SelectionMode="SingleDate"
+          Loaded="cal_ToDoCal_Loaded">
+    
+</Calendar>
+        </Viewbox>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="842,145,31,56" Grid.Column="1" Background="DarkGray">
+            <StackPanel x:Name="ToDoListPanel" Height="164"/>
+        </ScrollViewer>
+        <Label Grid.Column="1" Content="TASKS" HorizontalAlignment="Left" Margin="842,82,0,0" VerticalAlignment="Top" FontSize="36"/>
+
+        <Border Grid.Column="1" Style="{StaticResource CircleBorderStyle}" Height="55" Width="55" Margin="1081,80,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <Button Content="+" Style="{StaticResource PlusButtonStyle}"/>
+        </Border>
+
+        <Label x:Name="lbl_Month" Grid.Column="1" FontSize="36" FontWeight="Bold" Content="Month" HorizontalAlignment="Left" Margin="65,60,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbl_Year" Grid.Column="1" FontSize="36" FontWeight="Bold" Content="Year" HorizontalAlignment="Left" Margin="271,60,0,0" VerticalAlignment="Top"/>
+
+        <Button x:Name="btn_BackMonth" Tag="-1" Style="{StaticResource NavButtonStyle}" Grid.Column="1" Content="◀" Margin="675,68,455,712" Click="ShiftMonth"/>
+        <Button x:Name="btn_ForwMonth" Tag="1" Style="{StaticResource NavButtonStyle}" Grid.Column="1" Content="▶" Margin="733,68,397,712" Click="ShiftMonth"/>
+
+    </Grid>
+</Page>

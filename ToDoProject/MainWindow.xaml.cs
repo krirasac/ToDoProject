@@ -23,6 +23,12 @@ namespace ToDoProject
         public MainWindow()
         {
             InitializeComponent();
+            NavigateToStartupPage();
+        }
+
+        private void NavigateToStartupPage()
+        {
+            Frame.Navigate(new Page4());
         }
     }
 }
