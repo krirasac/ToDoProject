@@ -8,25 +8,46 @@
       d:DesignHeight="804" d:DesignWidth="1170"
       Title="List">
 
-    <Grid x:Name="ListGrid" Background="#FFF0F0F0">
-        <Label x:Name="CategoryLB" Content="Label" HorizontalAlignment="Left" Margin="60,83,0,0" VerticalAlignment="Top" Height="95" Width="373" FontSize="36" FontWeight="Bold" VerticalContentAlignment="Center" Padding="5,5,5,5"/>
-        <Button x:Name="ShowCompleteBTN" Content="Show Completed" HorizontalAlignment="Left" Height="53" Margin="920,104,0,0" VerticalAlignment="Top" Width="188" FontSize="20" Click="ShowCompleteBTN_Click"/>
-        <Canvas x:Name="LowPriority" HorizontalAlignment="Left" Height="521" Margin="60,224,0,0" VerticalAlignment="Top" Width="330" Background="#FFCECECE" Grid.RowSpan="2">
-            <ListBox Height="365" Canvas.Left="27" Canvas.Top="128" Width="276" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <Label Content="Low" Height="49" Width="122" FontSize="25" FontWeight="Bold" VerticalContentAlignment="Center" Padding="5,5,5,5" HorizontalAlignment="Left" Canvas.Left="27" Canvas.Top="46" VerticalAlignment="Top"/>
-            <Button x:Name="LowAddBTN" Content="Button" Height="40" Width="84" HorizontalAlignment="Center" Canvas.Left="219" Canvas.Top="50" VerticalAlignment="Top"/>
-        </Canvas>
-        <Canvas x:Name="MediumPriority" HorizontalAlignment="Left" Height="521" Margin="418,224,0,0" VerticalAlignment="Top" Width="330" Background="#FFCECECE">
-            <ListBox Height="365" Canvas.Left="28" Canvas.Top="123" Width="276" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <Label Content="Medium" Height="49" Width="122" FontSize="25" FontWeight="Bold" VerticalContentAlignment="Center" Padding="5,5,5,5" Canvas.Left="28" Canvas.Top="41" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <Button x:Name="MedAddBTN" Content="Button" Height="40" Width="84" Canvas.Left="220" Canvas.Top="45" HorizontalAlignment="Left" VerticalAlignment="Top" Click="MedAddBTN_Click"/>
-        </Canvas>
-        <Canvas x:Name="HighPriority" HorizontalAlignment="Left" Height="521" Margin="778,224,0,0" VerticalAlignment="Top" Width="330" Background="#FFCECECE" Grid.RowSpan="2">
-            <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Height="365" Canvas.Left="30" Canvas.Top="118" Width="276"/>
-            <Label Content="High" FontSize="25" FontWeight="Bold" VerticalContentAlignment="Center" Padding="5,5,5,5" Height="49" Canvas.Left="30" Canvas.Top="36" Width="122"/>
-            <Button x:Name="HighAddBTN" Content="Button" Height="40" Canvas.Left="222" Canvas.Top="40" Width="84"/>
-        </Canvas>
-        <Canvas x:Name="CompleteList" HorizontalAlignment="Center" Height="521" Margin="0,224,0,0" VerticalAlignment="Top" Width="1048" Background="#FFCECECE" Visibility="Collapsed">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Design.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid x:Name="ListGrid" Background="#FFE3E3E3">
+        <Label Style="{DynamicResource Header}" x:Name="CategoryLB" Content="Category" HorizontalAlignment="Left" Margin="60,94,0,0" VerticalAlignment="Top" Height="94" Width="373" FontSize="36" VerticalContentAlignment="Center" Padding="5,5,5,5" FontWeight="Bold"/>
+        <Button Style="{DynamicResource CompleteBTN}" x:Name="ShowCompleteBTN" Content="Show Completed" HorizontalAlignment="Left" Height="74" Margin="888,104,0,0" VerticalAlignment="Top" Width="220" FontSize="20" Click="ShowCompleteBTN_Click" FontWeight="Bold"/>
+        <Border Style="{DynamicResource BorderWithShadowBlur}" Width="330" Height="521" Margin="60,224,780,59">
+            <Canvas Style="{DynamicResource CanvaList}" x:Name="LowPriority" HorizontalAlignment="Center" Height="521" VerticalAlignment="Center" Width="330" Grid.RowSpan="2">
+                <ListBox x:Name="LowPriorityList" Style="{DynamicResource List}"  ItemContainerStyle="{DynamicResource ContainerStyle}" Height="354" Canvas.Left="27" Canvas.Top="128" Width="276" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                <Label Content="Low" Height="49" Width="122" FontSize="25" VerticalContentAlignment="Center" Padding="5,5,5,5" HorizontalAlignment="Left" Canvas.Left="27" Canvas.Top="46" VerticalAlignment="Top"/>
+                <Button Style="{DynamicResource AddBTN}" x:Name="LowAddBTN" Height="40" Canvas.Left="264" Canvas.Top="40" Width="42" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Assets/add_button.png" Stretch="Uniform"/>
+                    </Button.Background>
+
+                </Button>
+            </Canvas>
+        </Border>
+
+        <Border Style="{DynamicResource BorderWithShadowBlur}" Width="330" Height="521" Margin="420,224,420,59">
+            <Canvas Style="{DynamicResource CanvaList}" x:Name="MediumPriority" HorizontalAlignment="Center" Height="521" VerticalAlignment="Center" Width="330">
+                <ListBox Style="{DynamicResource List}"  ItemContainerStyle="{DynamicResource ContainerStyle}" Height="355" Canvas.Left="28" Canvas.Top="123" Width="276" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                <Label Content="Medium" Height="49" Width="122" FontSize="25" VerticalContentAlignment="Center" Padding="5,5,5,5" Canvas.Left="28" Canvas.Top="41" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Button Style="{DynamicResource AddBTN}" x:Name="MedAddBTN" Height="40" Canvas.Left="264" Canvas.Top="40" Width="42" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            </Canvas>
+        </Border>
+
+        <Border Style="{DynamicResource BorderWithShadowBlur}" Width="330" Height="521" Margin="778,224,62,59">
+            <Canvas Style="{DynamicResource CanvaList}" x:Name="HighPriority" HorizontalAlignment="Center" Height="521" VerticalAlignment="Center" Width="330" Grid.RowSpan="2">
+                <ListBox Style="{DynamicResource List}"  ItemContainerStyle="{DynamicResource ContainerStyle}" d:ItemsSource="{d:SampleData ItemCount=5}" Height="355" Canvas.Left="30" Canvas.Top="118" Width="276" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                <Label Content="High" FontSize="25" VerticalContentAlignment="Center" Padding="5,5,5,5" Height="49" Canvas.Left="30" Canvas.Top="36" Width="122"/>
+                <Button Style="{DynamicResource AddBTN}" x:Name="HighAddBTN" Height="40" Canvas.Left="264" Canvas.Top="40" Width="42" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            </Canvas>
+        </Border>
+        <Canvas Style="{DynamicResource CanvaList}" x:Name="CompleteList" HorizontalAlignment="Center" Height="521" Margin="0,224,0,0" VerticalAlignment="Top" Width="1048" Visibility="Collapsed">
             <ListBox Height="365" Canvas.Left="27" Canvas.Top="128" Width="993" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <Label Content="Completed" Height="49" Width="122" FontSize="25" FontWeight="Bold" VerticalContentAlignment="Center" Padding="5,5,5,5" HorizontalAlignment="Left" Canvas.Left="27" Canvas.Top="46" VerticalAlignment="Top"/>
         </Canvas>

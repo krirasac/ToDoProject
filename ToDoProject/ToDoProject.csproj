@@ -61,6 +61,10 @@
     <Compile Include="TaskDetails.xaml.cs">
       <DependentUpon>TaskDetails.xaml</DependentUpon>
     </Compile>
+    <Page Include="Design.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="EditTask.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -107,6 +111,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Fonts\Helvetica.ttf" />
+    <Resource Include="Fonts\Helvetica-Bold.ttf" />
+    <Resource Include="Fonts\Helvetica-BoldOblique.ttf" />
+    <Resource Include="Fonts\Helvetica-Light.ttf" />
+    <Resource Include="Fonts\Helvetica-Oblique.ttf" />
+    <Resource Include="Fonts\helvetica-rounded-bold.otf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -114,6 +124,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\add_button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\add_buttonhover.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

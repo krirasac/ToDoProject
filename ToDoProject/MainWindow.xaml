@@ -6,12 +6,31 @@
         xmlns:local="clr-namespace:ToDoProject"
         mc:Ignorable="d"
         Title="MainWindow" Height="820" Width="1420" WindowStartupLocation="CenterScreen">
-    <Grid x:Name="MainGrid">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Design.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid x:Name="MainGrid" Background="#F0F0F0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250*"/>
             <ColumnDefinition Width="1170*"/>
         </Grid.ColumnDefinitions>
-        <Frame x:Name ="MainFrame" Grid.Column="1" Content="" HorizontalAlignment="Center" Height="804" VerticalAlignment="Center" Width="1170" NavigationUIVisibility="Hidden"/>
+        <StackPanel>
+                <Label Content="LIST"  Margin="75,50,0,0" FontSize="24" />
+                <Button Content="ALL" x:Name="MW_All_Btn" Margin="80,10,80,0" HorizontalAlignment="Left" FontSize="20"/>
+                <Button Content="CATEGORY" x:Name="MW_Ctgy_Btn" Margin="80,10,60,0" HorizontalAlignment="Left" FontSize="20"/>
+                <Label Content="CALENDAR"  Margin="75,50,0,0" FontSize="24" />
+                <Button Content="WEEKLY" x:Name="MW_Wk_Btn" Margin="80,10,80,0" HorizontalAlignment="Left" FontSize="20"/>
+                <Button Content="MONTHLY" x:Name="MW_Mn_Btn" Margin="80,10,70,0" HorizontalAlignment="Left" FontSize="20"/>
+            </StackPanel>
+        <Border Style="{DynamicResource NavShadowBlur}" Grid.Column="1">
+            <Frame x:Name ="MainFrame" Grid.Column="1" Content="" HorizontalAlignment="Center" Height="804" VerticalAlignment="Center" Width="1170" NavigationUIVisibility="Hidden"/>
 
+        </Border>
     </Grid>
 </Window>

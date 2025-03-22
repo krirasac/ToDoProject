@@ -26,6 +26,9 @@ namespace ToDoProject
         {
             InitializeComponent();
             this.main = main;
+
+            LowPriorityList.Items.Add("Hello");
+            LowPriorityList.Items.Add("Nice to Meet You");
         }
 
         private void MedAddBTN_Click(object sender, RoutedEventArgs e)
@@ -44,6 +47,7 @@ namespace ToDoProject
                 LowPriority.Visibility = Visibility.Collapsed;
                 CompleteList.Visibility = Visibility.Visible;
 
+                button.Background = (Brush)(new BrushConverter().ConvertFrom("#E65555"));
                 button.Content = "Hide Completed";
             }
             else if (button.Content.ToString() == "Hide Completed")
@@ -53,6 +57,7 @@ namespace ToDoProject
                 LowPriority.Visibility = Visibility.Visible;
                 CompleteList.Visibility = Visibility.Collapsed;
 
+                button.Background = (Brush)(new BrushConverter().ConvertFrom("#38A8A3"));
                 button.Content = "Show Completed";
             }
         }
