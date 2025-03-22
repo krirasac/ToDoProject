@@ -12,22 +12,22 @@
         <Label x:Name="CategoryLB" Content="Label" HorizontalAlignment="Left" Margin="60,83,0,0" VerticalAlignment="Top" Height="95" Width="373" FontSize="36" FontWeight="Bold" VerticalContentAlignment="Center" Padding="5,5,5,5"/>
         <Button x:Name="ShowCompleteBTN" Content="Show Completed" HorizontalAlignment="Left" Height="53" Margin="920,104,0,0" VerticalAlignment="Top" Width="188" FontSize="20" Click="ShowCompleteBTN_Click"/>
         <Canvas x:Name="LowPriority" HorizontalAlignment="Left" Height="521" Margin="60,224,0,0" VerticalAlignment="Top" Width="330" Background="#FFCECECE" Grid.RowSpan="2">
-            <ListBox Height="365" Canvas.Left="27" Canvas.Top="128" Width="276" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <ListBox x:Name="LowPriorityList" Height="365" Canvas.Left="27" Canvas.Top="128" Width="276"/>
             <Label Content="Low" Height="49" Width="122" FontSize="25" FontWeight="Bold" VerticalContentAlignment="Center" Padding="5,5,5,5" HorizontalAlignment="Left" Canvas.Left="27" Canvas.Top="46" VerticalAlignment="Top"/>
             <Button x:Name="LowAddBTN" Content="Button" Height="40" Width="84" HorizontalAlignment="Center" Canvas.Left="219" Canvas.Top="50" VerticalAlignment="Top"/>
         </Canvas>
         <Canvas x:Name="MediumPriority" HorizontalAlignment="Left" Height="521" Margin="418,224,0,0" VerticalAlignment="Top" Width="330" Background="#FFCECECE">
-            <ListBox Height="365" Canvas.Left="28" Canvas.Top="123" Width="276" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <ListBox x:Name="MediumPriorityList" Height="365" Canvas.Left="28" Canvas.Top="123" Width="276" SelectionChanged="MediumPriorityList_SelectionChanged"/>
             <Label Content="Medium" Height="49" Width="122" FontSize="25" FontWeight="Bold" VerticalContentAlignment="Center" Padding="5,5,5,5" Canvas.Left="28" Canvas.Top="41" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             <Button x:Name="MedAddBTN" Content="Button" Height="40" Width="84" Canvas.Left="220" Canvas.Top="45" HorizontalAlignment="Left" VerticalAlignment="Top" Click="MedAddBTN_Click"/>
         </Canvas>
         <Canvas x:Name="HighPriority" HorizontalAlignment="Left" Height="521" Margin="778,224,0,0" VerticalAlignment="Top" Width="330" Background="#FFCECECE" Grid.RowSpan="2">
-            <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Height="365" Canvas.Left="30" Canvas.Top="118" Width="276"/>
+            <ListBox x:Name="HighPriorityList" Height="365" Canvas.Left="30" Canvas.Top="118" Width="276" SelectionChanged="HighPriorityList_SelectionChanged"/>
             <Label Content="High" FontSize="25" FontWeight="Bold" VerticalContentAlignment="Center" Padding="5,5,5,5" Height="49" Canvas.Left="30" Canvas.Top="36" Width="122"/>
             <Button x:Name="HighAddBTN" Content="Button" Height="40" Canvas.Left="222" Canvas.Top="40" Width="84"/>
         </Canvas>
         <Canvas x:Name="CompleteList" HorizontalAlignment="Center" Height="521" Margin="0,224,0,0" VerticalAlignment="Top" Width="1048" Background="#FFCECECE" Visibility="Collapsed">
-            <ListBox Height="365" Canvas.Left="27" Canvas.Top="128" Width="993" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <ListBox x:Name="CompletedTasksList" Height="365" Canvas.Left="27" Canvas.Top="128" Width="993"/>
             <Label Content="Completed" Height="49" Width="122" FontSize="25" FontWeight="Bold" VerticalContentAlignment="Center" Padding="5,5,5,5" HorizontalAlignment="Left" Canvas.Left="27" Canvas.Top="46" VerticalAlignment="Top"/>
         </Canvas>
 

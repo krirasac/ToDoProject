@@ -7,20 +7,20 @@
              mc:Ignorable="d" 
              d:DesignHeight="820" d:DesignWidth="1420">
     <Grid>
-        <Canvas Background="White" HorizontalAlignment="Center" Height="509" VerticalAlignment="Center" Width="858">
+        <Canvas Background="White" HorizontalAlignment="Left" Margin="289,188,0,0" Height="509" VerticalAlignment="Top" Width="858">
             <TextBox x:Name="NameInput" Text="Task Name" Canvas.Left="65" Canvas.Top="70" FontSize="22" Height="34" Width="671" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <TextBox Text="Description" Canvas.Left="65" Canvas.Top="301" FontSize="22" Height="86" Width="671" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <Label Content="Deadline" Canvas.Left="121" Canvas.Top="133" HorizontalAlignment="Left" VerticalAlignment="Center" Width="109" FontSize="20"/>
             <Label Content="Category" Canvas.Left="121" Canvas.Top="178" HorizontalAlignment="Left" VerticalAlignment="Center" Width="109" FontSize="20"/>
             <Label Content="Priority" Canvas.Left="121" Canvas.Top="236" HorizontalAlignment="Left" VerticalAlignment="Center" Width="109" FontSize="20"/>
             <ComboBox x:Name="CategoryCB" Height="37" Canvas.Left="244" Canvas.Top="180" Width="492" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <DatePicker Height="30" Canvas.Left="245" Canvas.Top="136" Width="491" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <Button x:Name="LowBTN" Content="Low" Height="37" Canvas.Left="244" Canvas.Top="236" Width="122" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <Button x:Name="MedBTN" Content="Medium" Height="37" Canvas.Left="387" Canvas.Top="236" Width="122" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <Button x:Name="HighBTN" Content="High" Height="37" Canvas.Left="527" Canvas.Top="236" Width="122" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <Button x:Name="ExitTN" Content="X" Height="43" Canvas.Left="774" Canvas.Top="30" Width="52" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <DatePicker x:Name="DeadlinePicker" Height="30" Canvas.Left="245" Canvas.Top="136" Width="491"/>
+            <TextBox x:Name="DescriptionInput" Text="Description" Canvas.Left="65" Canvas.Top="301" FontSize="22" Height="86" Width="671"/>
+            <Button x:Name="LowBTN" Content="Low" Height="37" Canvas.Left="244" Canvas.Top="236" Width="122" HorizontalAlignment="Left" VerticalAlignment="Center" Click="LowBTN_Click"/>
+            <Button x:Name="MedBTN" Content="Medium" Height="37" Canvas.Left="387" Canvas.Top="236" Width="122" HorizontalAlignment="Left" VerticalAlignment="Center" Click="MedBTN_Click"/>
+            <Button x:Name="HighBTN" Content="High" Height="37" Canvas.Left="527" Canvas.Top="236" Width="122" HorizontalAlignment="Left" VerticalAlignment="Center" Click="HighBTN_Click"/>
+            <Button x:Name="ExitTN" Content="X" Height="43" Canvas.Left="774" Canvas.Top="30" Width="52" HorizontalAlignment="Center" VerticalAlignment="Top" Click="ExitTN_Click"/>
             <Button x:Name="DeleteBTN" Content="Delete" Height="50" Canvas.Left="539" Canvas.Top="423" Width="132" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="18"/>
-            <Button x:Name="SaveBTN" Content="Save" Height="50" Canvas.Left="694" Canvas.Top="423" Width="132" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="18"/>
+            <Button x:Name="SaveBTN" Content="Save" Height="50" Canvas.Left="694" Canvas.Top="423" Width="132" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="18" Click="SaveBTN_Click"/>
         </Canvas>
     </Grid>
 </UserControl>

@@ -23,10 +23,21 @@ namespace ToDoProject
     {
         bool openMenu = false;
 
-        public TaskDetails()
+        public TaskDetails(EditTask.Task selectedTask)
         {
             InitializeComponent();
+            DisplayTaskDetails(selectedTask);
         }
+
+        private void DisplayTaskDetails(EditTask.Task task)
+        {
+            if (task == null) return;
+
+            DateTimeLB.Content = task.Deadline.ToShortDateString();
+            CategoryLB.Content = task.Category;
+            PriorityLB.Content = task.Priority;
+        }
+
 
         private void MoreBTN_Click(object sender, RoutedEventArgs e)
         {

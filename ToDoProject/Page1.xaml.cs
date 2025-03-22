@@ -30,8 +30,9 @@ namespace ToDoProject
 
         private void MedAddBTN_Click(object sender, RoutedEventArgs e)
         {
-            main.MainGrid.Children.Add(new TaskDetails());
+            main.MainGrid.Children.Add(new EditTask(this));
         }
+
 
         private void ShowCompleteBTN_Click(object sender, RoutedEventArgs e)
         {
@@ -55,6 +56,41 @@ namespace ToDoProject
 
                 button.Content = "Show Completed";
             }
+        }
+
+        public void AddTaskToList(EditTask.Task task)
+        {
+            if (task.Priority == "Low")
+            {
+                LowPriorityList.Items.Add(task.Name);
+            }
+            else if (task.Priority == "Medium")
+            {
+                MediumPriorityList.Items.Add(task.Name);
+            }
+            else if (task.Priority == "High")
+            {
+                HighPriorityList.Items.Add(task.Name);
+            }
+        }
+
+        private void LowPriorityList_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+            if (LowPriorityList.SelectedItem is EditTask.Task selectedTask)
+            {
+                main.MainGrid.Children.Clear();
+                main.MainGrid.Children.Add(new TaskDetails(selectedTask));
+            }
+        }
+
+        private void HighPriorityList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void MediumPriorityList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
