@@ -110,5 +110,10 @@ namespace ToDoProject
             InitializeDateBorders();
             lbl_Month.Content = currentDate.ToString("MMMM");
         }
+
+        private void btn_AddTask_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

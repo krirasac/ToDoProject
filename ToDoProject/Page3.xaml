@@ -52,39 +52,6 @@
             </Style.Triggers>
         </Style>
 
-        <Style x:Key="PlusButtonStyle" TargetType="Button">
-            <Setter Property="Width" Value="50"/>
-            <Setter Property="Height" Value="50"/>
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="FontSize" Value="24"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Cursor" Value="Hand"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Grid>
-                            <TextBlock x:Name="TextBlockContent"
-                               Text="{TemplateBinding Content}" 
-                               Foreground="{TemplateBinding Foreground}" 
-                               FontSize="{TemplateBinding FontSize}"
-                               TextDecorations="None"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"/>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="TextBlockContent" Property="Foreground" Value="Black"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
         <Style x:Key="NavButtonStyle" TargetType="Button">
             <Setter Property="Width" Value="40"/>
             <Setter Property="Height" Value="40"/>
@@ -123,8 +90,21 @@
         </ScrollViewer>
 
         <!--fix this later-->
-        <Border Grid.Column="1" Style="{StaticResource CircleBorderStyle}" Height="90" Width="90" Margin="1031,596,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
-            <Button Content="+" Style="{StaticResource PlusButtonStyle}"/>
+        <Border x:Name="btn_AddTask"
+Grid.Column="1"
+Style="{StaticResource CircleBorderStyle}"
+Height="70" Width="70"
+Margin="1044,612,0,0"
+VerticalAlignment="Top"
+HorizontalAlignment="Left"
+        Cursor="Hand"
+MouseLeftButtonDown="btn_AddTask_Click">
+            <TextBlock Text="+" 
+       FontSize="36"
+       FontWeight="Bold"
+       Foreground="White"
+       HorizontalAlignment="Center"
+       VerticalAlignment="Center"/>
         </Border>
 
         <Button Style="{StaticResource ButtonStyle}" Content="All" Grid.Column="1" Margin="835,365,235,415"/>
