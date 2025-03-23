@@ -46,6 +46,8 @@ namespace ToDoProject
                 MediumPriority.Visibility = Visibility.Collapsed;
                 LowPriority.Visibility = Visibility.Collapsed;
                 CompleteList.Visibility = Visibility.Visible;
+                CompleteBorder.Visibility = Visibility.Visible;
+
 
                 button.Background = (Brush)(new BrushConverter().ConvertFrom("#E65555"));
                 button.Content = "Hide Completed";
@@ -56,6 +58,7 @@ namespace ToDoProject
                 MediumPriority.Visibility = Visibility.Visible;
                 LowPriority.Visibility = Visibility.Visible;
                 CompleteList.Visibility = Visibility.Collapsed;
+                CompleteBorder.Visibility = Visibility.Collapsed;
 
                 button.Background = (Brush)(new BrushConverter().ConvertFrom("#38A8A3"));
                 button.Content = "Show Completed";
