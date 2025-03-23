@@ -73,6 +73,27 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <Style x:Key="RoundCheckBox" TargetType="CheckBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="CheckBox">
+                        <Border Width="40" Height="40" CornerRadius="20" BorderBrush="Black" BorderThickness="2" Background="White">
+                            <Grid>
+                                <Ellipse Fill="Transparent" Stroke="Black" StrokeThickness="2"/>
+                                <TextBlock Text="✓" FontSize="24" FontWeight="Bold" Foreground="Black"
+                                   Visibility="Collapsed" x:Name="CheckMark" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Page.Resources>
 
     <Grid Background="White">
@@ -85,8 +106,10 @@
         <!--ignore this it's only for me-->
         <Rectangle Grid.Column="0" Fill="AliceBlue"/>
 
-        <ScrollViewer Grid.Column="1" Background="DarkGray" VerticalScrollBarVisibility="Auto" Margin="38,410,47,235">
-            <StackPanel x:Name="NoteStackPanel" Orientation="Vertical"/>
+        <ScrollViewer Grid.Column="1" Background="Transparent" VerticalScrollBarVisibility="Auto" Margin="38,410,47,235" Width="1085">
+            <Grid>
+                <StackPanel x:Name="ToDoListPanel" Orientation="Vertical" VerticalAlignment="Stretch"/>
+            </Grid>
         </ScrollViewer>
 
         <!--fix this later-->
@@ -94,7 +117,7 @@
 Grid.Column="1"
 Style="{StaticResource CircleBorderStyle}"
 Height="70" Width="70"
-Margin="1044,612,0,0"
+Margin="1044,669,0,0"
 VerticalAlignment="Top"
 HorizontalAlignment="Left"
         Cursor="Hand"

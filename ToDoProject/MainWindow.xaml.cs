@@ -28,7 +28,7 @@ namespace ToDoProject
 
         private void NavigateToStartupPage()
         {
-            Frame.Navigate(new Page4());
+            Frame.Navigate(new Page3());
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,11 +24,13 @@ namespace ToDoProject
         //for the dates in the stackpanel
         private List<Border> dateBorders = new List<Border>();
         private DateTime currentDate = DateTime.Today;
+        private string toDoList = "C:\\Users\\Elisha\\source\\repos\\ToDoProject\\ToDoProject\\Assets\\ToDoList.txt";
         public Page3()
         {
             InitializeComponent();
             InitializeDateBorders();
             lbl_Month.Content = currentDate.ToString("MMMM");
+            PopulateToDoList(currentDate);
         }
 
         //start of dates in the stackpanel
@@ -87,6 +90,7 @@ namespace ToDoProject
             currentDate = currentDate.AddDays(index);
             InitializeDateBorders();
 
+            PopulateToDoList(currentDate);
             lbl_Month.Content = currentDate.ToString("MMMM"); //changes the month label content
         }
 
@@ -111,7 +115,163 @@ namespace ToDoProject
             lbl_Month.Content = currentDate.ToString("MMMM");
         }
 
+        //show tasks in the stackpanel
+        private List<(string, string, string, string, string)> FormatTasks(string[] unformattedTasks)
+        {
+            List<(string name, string time, string date, string category, string priority)> formattedTasks = new List<(string, string, string, string, string)>();
+
+            foreach (string task in unformattedTasks)
+            {
+                string[] parts = task.Split('|');
+
+                string status = parts[0];
+                string taskName = parts[1];
+                string taskTime = parts[2];
+                string taskDate = parts[3];
+                string category = parts[4];
+                string priority = parts[5];
+
+                formattedTasks.Add((taskName, taskTime, taskDate, category, priority));
+            }
+
+            return formattedTasks;
+        }
+
+        private void PopulateToDoList(DateTime selectedDate)
+        {
+            ToDoListPanel.Children.Clear();
+
+            string[] unformattedTasks = File.ReadAllLines(toDoList);
+            List<(string name, string time, string date, string category, string priority)> formattedTasks = FormatTasks(unformattedTasks);
+
+            //only the selected date
+            List<(string name, string time, string date, string category, string priority)> tasks = new List<(string, string, string, string, string)>();
+
+            foreach ((string, string, string, string, string) task in formattedTasks)
+            {
+                if (task.Item3 == selectedDate.ToString("yyyy-MM-dd"))
+                    tasks.Add(task);
+            }
+
+            //add the correct tasks to the stackpanel
+            foreach ((string, string, string, string, string) task in tasks)
+            {
+                Border taskBorder = new Border
+                {
+                    HorizontalAlignment = HorizontalAlignment.Left,
+                    Width = 1055,
+                    Height = 100,
+                    Background = Brushes.Transparent,
+                    BorderBrush = Brushes.Black,
+                    BorderThickness = new Thickness(2),
+                    Margin = new Thickness(6),
+                    CornerRadius = new CornerRadius(10),
+                    VerticalAlignment = VerticalAlignment.Top,
+                };
+
+                Grid taskGrid = new Grid
+                {
+                    Margin = new Thickness(2),
+                };
+                taskGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(5, GridUnitType.Star) });
+                taskGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(10, GridUnitType.Star) });
+                taskGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(5, GridUnitType.Star) });
+                taskGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(5, GridUnitType.Star) });
+                taskGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(5, GridUnitType.Star) });
+                taskGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
+                taskGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
+
+                TextBlock catName = new TextBlock
+                {
+                    Text = task.Item4, //wtv u put for the category
+                    Foreground = Brushes.LightGray,
+                    FontWeight = FontWeights.Bold,
+                    FontSize = 18,
+                    VerticalAlignment = VerticalAlignment.Center,
+                    Margin = new Thickness(10, 0, 0, 0)
+                };
+                Grid.SetRow(catName, 1);
+                Grid.SetColumn(catName, 1);
+
+                TextBlock taskName = new TextBlock
+                {
+                    Text = task.Item1, //wtv u put for the task name
+                    Foreground = Brushes.Black,
+                    FontWeight = FontWeights.Bold,
+                    FontSize = 24,
+                    VerticalAlignment = VerticalAlignment.Center,
+                    Margin = new Thickness(10, 0, 0, 0)
+                };
+                Grid.SetRow(taskName, 0);
+                Grid.SetColumn(taskName, 1);
+
+                TextBlock priority = new TextBlock
+                {
+                    Text = task.Item5,
+                    FontSize = 24,
+                    Foreground= Brushes.Black,
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Center
+                };
+                Grid.SetColumn(priority, 2);
+                Grid.SetRowSpan(priority, 2);
+
+                TextBlock time = new TextBlock
+                {
+                    Text = task.Item2, //time
+                    FontSize = 24,
+                    TextWrapping = TextWrapping.Wrap,
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Center
+                };
+                Grid.SetColumn(time, 3);
+                Grid.SetRowSpan(time, 2);
+
+                TextBlock edit = new TextBlock
+                {
+                    Text = "Edit",
+                    FontSize = 24,
+                    Cursor = Cursors.Hand,
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Center
+                };
+                edit.MouseLeftButtonDown += Edit_Click;
+                edit.MouseEnter += (s, e) => edit.TextDecorations = TextDecorations.Underline;
+                edit.MouseLeave += (s, e) => edit.TextDecorations = null;
+                Grid.SetColumn(edit, 4);
+                Grid.SetRowSpan(edit, 2);
+
+                CheckBox checkBox = new CheckBox
+                {
+                    Width = 40,
+                    Height = 40,
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Center,
+                    Cursor = Cursors.Hand
+                };
+                checkBox.Style = (Style)FindResource("RoundCheckBox");
+                Grid.SetColumn(checkBox, 0);
+                Grid.SetRowSpan(checkBox, 2);
+
+                taskGrid.Children.Add(checkBox);
+                taskGrid.Children.Add(catName);
+                taskGrid.Children.Add(taskName);
+                taskGrid.Children.Add(priority);
+                taskGrid.Children.Add(time);
+                taskGrid.Children.Add(edit);
+
+                taskBorder.Child = taskGrid;
+
+                ToDoListPanel.Children.Add(taskBorder);
+            }
+        }
+
         private void btn_AddTask_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
         {
 
         }
