@@ -23,10 +23,6 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-
-
-        
-
     </Page.Resources>
 
     <Grid Background="White">
@@ -44,12 +40,11 @@
           SelectionMode="SingleDate"
                       SelectedDatesChanged="cal_ToDoCal_SelectedDatesChanged"
                       Loaded="cal_ToDoCal_Loaded">
-    
-</Calendar>
+            </Calendar>
         </Viewbox>
 
-        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="842,174,31,56" Grid.Column="1" Background="Transparent">
-            <StackPanel x:Name="ToDoListPanel" Height="164" Width="300" VerticalAlignment="Top"/>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" CanContentScroll="True" Margin="842,174,31,0" Grid.Column="1" Background="Transparent" Height="596">
+            <StackPanel x:Name="ToDoListPanel" Width="300" VerticalAlignment="Top"/>
         </ScrollViewer>
         <Label Grid.Column="1" Content="TASKS" HorizontalAlignment="Left" Margin="842,82,0,0" VerticalAlignment="Top" FontSize="36"/>
 
