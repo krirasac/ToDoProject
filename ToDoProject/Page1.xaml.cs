@@ -21,18 +21,40 @@ namespace ToDoProject
     public partial class Page1 : Page
     {
         MainWindow main { get; set; }
+        private FileManager fm = new FileManager();
+        public List<string> High = new List<string>();
+        public List<string> Medium = new List<string>();
+        public List<string> Low = new List<string>();
 
         public Page1(MainWindow main)
         {
             InitializeComponent();
             this.main = main;
+            PopulateListBox();
+        }
+
+        private void PopulateListBox()
+        {
+            High.Clear(); Medium.Clear(); Low.Clear();
+            for (int x = 0; x < fm.sList.Count(); x++)
+            {
+                if (fm.sList[x][3] == "High")
+                    High.Add(fm.sList[x][0]);
+                else if (fm.sList[x][3] == "Medium")
+                    Medium.Add(fm.sList[x][0]);
+                else if (fm.sList[x][3] == "Low")
+                    Low.Add(fm.sList[x][0]);
+            }
+
+            HighPriorityList.ItemsSource = High;
+            MediumPriorityList.ItemsSource = Medium;
+            LowPriorityList.ItemsSource = Low;
         }
 
         private void MedAddBTN_Click(object sender, RoutedEventArgs e)
         {
             main.MainGrid.Children.Add(new EditTask(this));
         }
-
 
         private void ShowCompleteBTN_Click(object sender, RoutedEventArgs e)
         {
@@ -62,35 +84,61 @@ namespace ToDoProject
         {
             if (task.Priority == "Low")
             {
-                LowPriorityList.Items.Add(task.Name);
+                Low.Add(task.Name);
             }
             else if (task.Priority == "Medium")
             {
-                MediumPriorityList.Items.Add(task.Name);
+                Medium.Add(task.Name);
             }
             else if (task.Priority == "High")
             {
-                HighPriorityList.Items.Add(task.Name);
+                High.Add(task.Name);
             }
+            UpdateListBox();  
         }
 
-        private void LowPriorityList_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        private void UpdateListBox()
         {
-            if (LowPriorityList.SelectedItem is EditTask.Task selectedTask)
+            HighPriorityList.ItemsSource = null; 
+            MediumPriorityList.ItemsSource = null;
+            LowPriorityList.ItemsSource = null;
+
+            HighPriorityList.ItemsSource = High;
+            MediumPriorityList.ItemsSource = Medium;
+            LowPriorityList.ItemsSource = Low;
+        }
+
+        private void DoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (sender is ListBox LB)
             {
-                main.MainGrid.Children.Clear();
-                main.MainGrid.Children.Add(new TaskDetails(selectedTask));
+                int index = 0;
+                string LoMeHi = "";
+                List<string[]> list = new List<string[]>();
+
+                if (LB.Name == "LowPriorityList")
+                {
+                    index = LowPriorityList.SelectedIndex;
+                    LoMeHi = "Low";
+                }
+                else if (LB.Name == "MediumPriorityList")
+                {
+                    index = MediumPriorityList.SelectedIndex;
+                    LoMeHi = "Medium";
+                }
+                else if (LB.Name == "HighPriorityList")
+                {
+                    index = HighPriorityList.SelectedIndex;
+                    LoMeHi = "High";
+                }
+               
+                for (int i = 0; i < fm.sList.Count; i++)
+                {
+                    if (fm.sList[i][3] == LoMeHi)
+                        list.Add(fm.sList[i]);
+                }
+                main.MainGrid.Children.Add(new TaskDetails(list[index][0], list[index][1], list[index][2], list[index][3], list[index][4]));
             }
-        }
-
-        private void HighPriorityList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void MediumPriorityList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
     }
 }

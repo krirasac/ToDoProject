@@ -12,6 +12,5 @@
             <ColumnDefinition Width="1170*"/>
         </Grid.ColumnDefinitions>
         <Frame x:Name ="MainFrame" Grid.Column="1" Content="" HorizontalAlignment="Center" Height="804" VerticalAlignment="Center" Width="1170" NavigationUIVisibility="Hidden"/>
-
     </Grid>
 </Window>

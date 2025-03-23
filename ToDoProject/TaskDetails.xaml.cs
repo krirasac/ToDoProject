@@ -23,10 +23,10 @@ namespace ToDoProject
     {
         bool openMenu = false;
 
-        public TaskDetails(EditTask.Task selectedTask)
+        public TaskDetails(string name, string date, string desc, string priority, string category)
         {
             InitializeComponent();
-            DisplayTaskDetails(selectedTask);
+            DisplayTaskContent(name, date, desc, priority, category);
         }
 
         private void DisplayTaskDetails(EditTask.Task task)
@@ -36,6 +36,15 @@ namespace ToDoProject
             DateTimeLB.Content = task.Deadline.ToShortDateString();
             CategoryLB.Content = task.Category;
             PriorityLB.Content = task.Priority;
+        }
+
+        public void DisplayTaskContent(string name, string date, string desc, string priority, string category)
+        {
+            Name.Content = name;
+            Desc.Text = desc;
+            DateTimeLB.Content = date;
+            CategoryLB.Content = category;
+            PriorityLB.Content = priority;
         }
 
 
@@ -53,6 +62,11 @@ namespace ToDoProject
                 openMenu = false;
             }
             
+        }
+
+        private void BackBTN_Click(object sender, RoutedEventArgs e)
+        {
+            ((Grid)this.Parent).Children.Remove(this);
         }
     }
 }

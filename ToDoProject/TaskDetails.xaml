@@ -7,10 +7,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="820" d:DesignWidth="1420">
     <Grid OpacityMask="Black">
-        <Canvas Background="White" HorizontalAlignment="Left" Height="415" Margin="289,188,0,0" VerticalAlignment="Top" Width="858">
-            <Label Content="Task Name" Canvas.Left="174" Canvas.Top="40" HorizontalAlignment="Center" VerticalAlignment="Top" Width="225" Height="76" FontSize="22" VerticalContentAlignment="Center"/>
-            <Button x:Name="BackBTN" Content="Back" Height="59" Canvas.Left="50" Canvas.Top="67" Width="79" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <TextBlock Height="60" Canvas.Left="174" TextWrapping="Wrap" Text="Description" Canvas.Top="118" Width="538" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Canvas x:Name ="TaskDetailsCanvas" Background="White" HorizontalAlignment="Left" Height="415" Margin="289,188,0,0" VerticalAlignment="Top" Width="858">
+            <Label x:Name="Name" Content="Task Name" Canvas.Left="174" Canvas.Top="40" HorizontalAlignment="Center" VerticalAlignment="Top" Width="225" Height="76" FontSize="22" VerticalContentAlignment="Center"/>
+            <Button x:Name="BackBTN" Content="Back" Height="59" Canvas.Left="50" Canvas.Top="67" Width="79" HorizontalAlignment="Left" VerticalAlignment="Top" Click="BackBTN_Click"/>
+            <TextBlock x:Name="Desc" Height="60" Canvas.Left="174" TextWrapping="Wrap" Text="Description" Canvas.Top="118" Width="538" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Top"/>
             <Rectangle Height="152" Stroke="Black" Width="158" HorizontalAlignment="Center" Canvas.Left="154" Canvas.Top="216" VerticalAlignment="Top"/>
             <Button x:Name="MoreBTN" Content="More" Height="59" Canvas.Left="735" Canvas.Top="67" Width="79" HorizontalAlignment="Left" VerticalAlignment="Center" Click="MoreBTN_Click"/>
             <Rectangle Height="152" Stroke="Black" Width="158" Canvas.Left="359" Canvas.Top="216" HorizontalAlignment="Center" VerticalAlignment="Top"/>

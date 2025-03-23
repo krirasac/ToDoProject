@@ -58,6 +58,7 @@
     <Compile Include="EditTask.xaml.cs">
       <DependentUpon>EditTask.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FileManager.cs" />
     <Compile Include="TaskDetails.xaml.cs">
       <DependentUpon>TaskDetails.xaml</DependentUpon>
     </Compile>
