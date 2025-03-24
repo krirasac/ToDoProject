@@ -20,10 +20,40 @@ namespace ToDoProject
     /// </summary>
     public partial class MainWindow : Window
     {
+        public Button current;
+        public Button previous { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
             MainFrame.Content = new Page1(this);
+            changeBG(MW_All_Btn);
+            previous = MW_All_Btn;
+        }
+
+        private void MW_All_Btn_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new Page1(this));
+            changeBG(sender);
+            previous = sender as Button;
+        }
+
+        private void changeBG(object sender)
+        {
+            current = sender as Button;
+            current.Foreground = (Brush)new BrushConverter().ConvertFrom("#38A8A3");
+
+            if (previous != null)
+            {
+                previous.Foreground = (Brush)new BrushConverter().ConvertFrom("#191C2E");
+            }
+        }
+
+        private void MW_Personal_Btn_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new Page1(this));
+            changeBG(sender);
+            previous = sender as Button;
         }
     }
 }
