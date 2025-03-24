@@ -21,16 +21,16 @@
             <ColumnDefinition Width="1170*"/>
         </Grid.ColumnDefinitions>
         <StackPanel>
-                <Label Content="LIST"  Margin="75,50,0,0" FontSize="24" />
-                <Button Content="ALL" x:Name="MW_All_Btn" Margin="80,10,80,0" HorizontalAlignment="Left" FontSize="20"/>
-                <Button Content="CATEGORY" x:Name="MW_Ctgy_Btn" Margin="80,10,60,0" HorizontalAlignment="Left" FontSize="20"/>
-                <Label Content="CALENDAR"  Margin="75,50,0,0" FontSize="24" />
-                <Button Content="WEEKLY" x:Name="MW_Wk_Btn" Margin="80,10,80,0" HorizontalAlignment="Left" FontSize="20"/>
-                <Button Content="MONTHLY" x:Name="MW_Mn_Btn" Margin="80,10,70,0" HorizontalAlignment="Left" FontSize="20"/>
-            </StackPanel>
+            <Label Content="LIST"  Margin="75,50,0,0" FontSize="24" />
+            <Button Content="ALL" x:Name="MW_All_Btn" Margin="80,10,80,0" HorizontalAlignment="Left" FontSize="20"/>
+            <Button Content="CATEGORY" x:Name="MW_Ctgy_Btn" Margin="80,10,60,0" HorizontalAlignment="Left" FontSize="20"/>
+            <Label Content="CALENDAR"  Margin="75,50,0,0" FontSize="24" />
+            <Button Content="WEEKLY" x:Name="MW_Wk_Btn" Margin="80,10,80,0" HorizontalAlignment="Left" FontSize="20"/>
+            <Button Content="MONTHLY" x:Name="MW_Mn_Btn" Margin="80,10,70,0" HorizontalAlignment="Left" FontSize="20"/>
+        </StackPanel>
         <Border Style="{DynamicResource NavShadowBlur}" Grid.Column="1">
             <Frame x:Name ="MainFrame" Grid.Column="1" Content="" HorizontalAlignment="Center" Height="804" VerticalAlignment="Center" Width="1170" NavigationUIVisibility="Hidden"/>
-
         </Border>
+        <Canvas x:Name="PopBG" Style="{DynamicResource PopUp}" Grid.ColumnSpan="2" Visibility="Collapsed"/>
     </Grid>
 </Window>

@@ -20,9 +20,19 @@ namespace ToDoProject
     /// </summary>
     public partial class EditTask : UserControl
     {
-        public EditTask()
+        MainWindow home;
+
+        public EditTask(MainWindow main)
         {
             InitializeComponent();
+            home = main;
+            NameInput.Text = "cool";
+        }
+
+        private void ExitTN_Click(object sender, RoutedEventArgs e)
+        {
+            home.MainGrid.Children.Remove(this);
+            home.PopBG.Visibility = Visibility.Collapsed;
         }
     }
 }

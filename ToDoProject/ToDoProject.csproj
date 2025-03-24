@@ -133,5 +133,40 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\backarrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\backarrow_hover.png" />
+    <Resource Include="Assets\kebab icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\kebab_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\notification.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\personal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\work.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\category.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\highpriority.png" />
+    <Resource Include="Assets\midpriority.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\lowpriority.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\cancel_hover.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -33,7 +33,11 @@ namespace ToDoProject
 
         private void MedAddBTN_Click(object sender, RoutedEventArgs e)
         {
-            main.MainGrid.Children.Add(new TaskDetails());
+            EditTask selectedTask = new EditTask(main);
+            main.MainGrid.Children.Add(selectedTask);
+
+            Grid.SetColumn(selectedTask, 1);
+            main.PopBG.Visibility = Visibility.Visible;
         }
 
         private void ShowCompleteBTN_Click(object sender, RoutedEventArgs e)
@@ -63,6 +67,16 @@ namespace ToDoProject
                 button.Background = (Brush)(new BrushConverter().ConvertFrom("#38A8A3"));
                 button.Content = "Show Completed";
             }
+        }
+
+        private void Sample(object sender, MouseButtonEventArgs e)
+        {
+            TaskDetails selectedTask = new TaskDetails(main);
+            main.MainGrid.Children.Add(selectedTask);
+
+            Grid.SetColumn(selectedTask, 1);
+
+            main.PopBG.Visibility = Visibility.Visible;
         }
     }
 }

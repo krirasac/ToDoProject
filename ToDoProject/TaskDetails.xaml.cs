@@ -22,26 +22,34 @@ namespace ToDoProject
     public partial class TaskDetails : UserControl
     {
         bool openMenu = false;
+        MainWindow home;
 
-        public TaskDetails()
+        public TaskDetails(MainWindow main)
         {
             InitializeComponent();
+            home = main;
         }
 
         private void MoreBTN_Click(object sender, RoutedEventArgs e)
         {
             if (!openMenu)
             {
-                MoreMenu.Visibility = Visibility.Visible;
+                BorderMore.Visibility = Visibility.Visible;
                 openMenu = true;
             }
 
             else if (openMenu)
             {
-                MoreMenu.Visibility = Visibility.Collapsed;
+                BorderMore.Visibility= Visibility.Collapsed;
                 openMenu = false;
             }
             
+        }
+
+        private void BackBTN_Click(object sender, RoutedEventArgs e)
+        {
+           home.MainGrid.Children.Remove(this);
+           home.PopBG.Visibility = Visibility.Collapsed;
         }
     }
 }

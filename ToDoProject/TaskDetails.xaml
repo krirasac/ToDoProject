@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ToDoProject"
              mc:Ignorable="d" 
-             d:DesignHeight="820" d:DesignWidth="1420">
+             d:DesignHeight="820" d:DesignWidth="1140">
 
     <UserControl.Resources>
         <ResourceDictionary>
@@ -15,26 +15,52 @@
         </ResourceDictionary>
     </UserControl.Resources>
 
-    <Grid OpacityMask="Black">
-        <Canvas Style="{DynamicResource CanvaList}" HorizontalAlignment="Left" Height="415" Margin="289,188,0,0" VerticalAlignment="Top" Width="858">
-            <Label Content="Task Name" Canvas.Left="174" Canvas.Top="40" HorizontalAlignment="Center" VerticalAlignment="Top" Width="225" Height="76" FontSize="22" VerticalContentAlignment="Center"/>
-            <Button x:Name="BackBTN" Content="Back" Height="59" Canvas.Left="50" Canvas.Top="67" Width="79" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <TextBlock Height="60" Canvas.Left="174" TextWrapping="Wrap" Text="Description" Canvas.Top="118" Width="538" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-            <Rectangle Height="152" Stroke="Black" Width="158" HorizontalAlignment="Center" Canvas.Left="154" Canvas.Top="216" VerticalAlignment="Top"/>
-            <Button x:Name="MoreBTN" Content="More" Height="59" Canvas.Left="735" Canvas.Top="67" Width="79" HorizontalAlignment="Left" VerticalAlignment="Center" Click="MoreBTN_Click"/>
-            <Rectangle Height="152" Stroke="Black" Width="158" Canvas.Left="359" Canvas.Top="216" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-            <Rectangle Height="152" Stroke="Black" Width="158" Canvas.Left="567" Canvas.Top="216" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-            <Image x:Name="ReminderIMG" Height="85" Canvas.Left="193" Canvas.Top="233" Width="88" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <Image x:Name="CategoryIMG" Height="85" Canvas.Left="352" Canvas.Top="238" Width="88" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-            <Image x:Name="PriorityIMG" Height="85" Canvas.Left="602" Canvas.Top="233" Width="88" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <Label x:Name="DateTimeLB" Content="DateTime" Height="28" Width="80" HorizontalAlignment="Center" Canvas.Left="193" Canvas.Top="320" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-            <Label x:Name="CategoryLB" Content="Category" Height="28" Width="79" Canvas.Left="401" Canvas.Top="320" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-            <Label x:Name="PriorityLB" Content="Priority" Height="28" Width="80" Canvas.Left="610" Canvas.Top="320" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-        </Canvas>
-        <Canvas Style="{DynamicResource CanvaList}" x:Name="MoreMenu" Background="White" HorizontalAlignment="Left" Height="184" Margin="1088,68,0,0" VerticalAlignment="Top" Width="219" Visibility="Hidden">
-            <Button Content="Mark as Done" Height="38" Canvas.Left="18" Canvas.Top="26" Width="187" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15"/>
-            <Button Content="Edit Task" Height="36" Canvas.Left="18" Canvas.Top="74" Width="187" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15"/>
-            <Button Content="Delete Task" Height="36" Canvas.Left="18" Canvas.Top="122" Width="187" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15"/>
-        </Canvas>
+    <Grid>
+        <Border Style="{DynamicResource PopupBorder}" HorizontalAlignment="Left" Height="416" VerticalAlignment="Top" Width="858" Margin="40,160,0,0">
+            <Canvas Style="{DynamicResource CanvaList}" HorizontalAlignment="Left" Height="416" VerticalAlignment="Top" Width="858">
+                <Label Style="{DynamicResource Header}" Content="Task Name" Canvas.Left="129" Canvas.Top="35" HorizontalAlignment="Center" VerticalAlignment="Top" Width="575" Height="70" FontSize="36" VerticalContentAlignment="Center" FontWeight="Bold"/>
+                <Button Style="{DynamicResource BackBTN}" x:Name="BackBTN" Height="59" Canvas.Left="37" Canvas.Top="35" Width="62" HorizontalAlignment="Center" VerticalAlignment="Top" BorderBrush="Transparent" Click="BackBTN_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Assets/backarrow.png"/>
+                    </Button.Background>
+                </Button>
+                <TextBlock Style="{DynamicResource SubText}" Height="76" Canvas.Left="138" TextWrapping="Wrap" Text="Description" Canvas.Top="109" Width="569" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                <Button Style="{DynamicResource KebabBTN}" x:Name="MoreBTN" Height="59" Canvas.Left="780" Canvas.Top="35" Width="42" HorizontalAlignment="Left" VerticalAlignment="Top" Click="MoreBTN_Click" BorderBrush="Transparent">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Assets/kebab icon.png" Stretch="Uniform"/>
+                    </Button.Background>
+                </Button>
+
+                <Border Style="{DynamicResource BorderWithShadowBlur}" Width="152" Height="158" Canvas.Left="150" Canvas.Top="218" HorizontalAlignment="Center" VerticalAlignment="Top">
+                    <Canvas Style="{DynamicResource CanvaList}">
+                        <Image x:Name="ReminderIMG" Source="Assets/notification.png" Height="75" Canvas.Left="39" Canvas.Top="27" Width="74" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <Label Style="{DynamicResource Subtitles}" x:Name="DateTimeLB" Content="DateTime" Height="30" Width="80" HorizontalAlignment="Center" Canvas.Left="36" Canvas.Top="106" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="15" FontWeight="Bold"/>
+                    </Canvas>
+                </Border>
+
+                <Border Style="{DynamicResource BorderWithShadowBlur}" Width="152" Height="158" HorizontalAlignment="Center" Canvas.Left="352" VerticalAlignment="Top" Canvas.Top="217">
+                    <Canvas Style="{DynamicResource CanvaList}">
+                        <Image x:Name="CategoryIMG" Source="Assets/category.png" Height="74" Canvas.Left="39" Canvas.Top="27" Width="75" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                        <Label Style="{DynamicResource Subtitles}" x:Name="CategoryLB" Content="Category" Height="30" Width="80" Canvas.Left="36" Canvas.Top="105" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15" FontWeight="Bold"/>
+                    </Canvas>
+                </Border>
+
+                <Border Style="{DynamicResource BorderWithShadowBlur}" Width="152" Height="158" HorizontalAlignment="Center" Canvas.Left="550" VerticalAlignment="Top" Canvas.Top="216">
+                    <Canvas Style="{DynamicResource CanvaList}">
+                        <Image x:Name="PriorityIMG" Source="Assets/lowpriority.png" Height="74" Canvas.Left="39" Canvas.Top="27" Width="75" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                        <Label Style="{DynamicResource Subtitles}" x:Name="PriorityLB" Content="Priority" Height="30" Width="80" Canvas.Left="36" Canvas.Top="105" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15" FontWeight="Bold"/>
+                    </Canvas>
+                </Border>
+            </Canvas>
+        </Border>
+
+        <Border x:Name="BorderMore" Style="{DynamicResource BorderWithShadowBlur}" Width="219" Margin="867,126,54,502" Visibility="Collapsed">
+            <Canvas Style="{DynamicResource CanvaList}" x:Name="MoreMenu" HorizontalAlignment="Left" Height="184" VerticalAlignment="Top" Width="219">
+                <Button Style="{DynamicResource MoreOpt}" Content="Mark as Done" Height="38" Canvas.Left="18" Canvas.Top="26" Width="187" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15" FontWeight="Bold"/>
+                <Button Style="{DynamicResource MoreOpt}" Content="Edit Task" Height="36" Canvas.Left="18" Canvas.Top="74" Width="187" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15" FontWeight="Bold"/>
+                <Button Style="{DynamicResource MoreOpt}" Content="Delete Task" Height="36" Canvas.Left="18" Canvas.Top="122" Width="187" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15" FontWeight="Bold"/>
+            </Canvas>
+        </Border>
+
     </Grid>
 </UserControl>

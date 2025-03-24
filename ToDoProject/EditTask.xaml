@@ -5,22 +5,38 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ToDoProject"
              mc:Ignorable="d" 
-             d:DesignHeight="820" d:DesignWidth="1420">
+             d:DesignHeight="820" d:DesignWidth="1170">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Design.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
     <Grid>
-        <Canvas Background="White" HorizontalAlignment="Center" Height="509" VerticalAlignment="Center" Width="858">
-            <TextBox x:Name="NameInput" Text="Task Name" Canvas.Left="65" Canvas.Top="70" FontSize="22" Height="34" Width="671" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <TextBox Text="Description" Canvas.Left="65" Canvas.Top="301" FontSize="22" Height="86" Width="671" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <Label Content="Deadline" Canvas.Left="121" Canvas.Top="133" HorizontalAlignment="Left" VerticalAlignment="Center" Width="109" FontSize="20"/>
-            <Label Content="Category" Canvas.Left="121" Canvas.Top="178" HorizontalAlignment="Left" VerticalAlignment="Center" Width="109" FontSize="20"/>
-            <Label Content="Priority" Canvas.Left="121" Canvas.Top="236" HorizontalAlignment="Left" VerticalAlignment="Center" Width="109" FontSize="20"/>
-            <ComboBox x:Name="CategoryCB" Height="37" Canvas.Left="244" Canvas.Top="180" Width="492" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <DatePicker Height="30" Canvas.Left="245" Canvas.Top="136" Width="491" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <Button x:Name="LowBTN" Content="Low" Height="37" Canvas.Left="244" Canvas.Top="236" Width="122" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <Button x:Name="MedBTN" Content="Medium" Height="37" Canvas.Left="387" Canvas.Top="236" Width="122" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <Button x:Name="HighBTN" Content="High" Height="37" Canvas.Left="527" Canvas.Top="236" Width="122" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <Button x:Name="ExitTN" Content="X" Height="43" Canvas.Left="774" Canvas.Top="30" Width="52" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-            <Button x:Name="DeleteBTN" Content="Delete" Height="50" Canvas.Left="539" Canvas.Top="423" Width="132" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="18"/>
-            <Button x:Name="SaveBTN" Content="Save" Height="50" Canvas.Left="694" Canvas.Top="423" Width="132" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="18"/>
-        </Canvas>
+        <Border Style="{DynamicResource BorderWithShadowBlur}" HorizontalAlignment="Left"  VerticalAlignment="Center" Height="669" Width="872" Margin="106,0,0,0">
+            <Canvas Style="{DynamicResource CanvaList}" Width="858" Height="600">
+                <TextBox Style="{DynamicResource EditTaskName}" x:Name="NameInput" Text="Task Name" Canvas.Left="55" Canvas.Top="130" FontSize="18" Height="52" Width="634" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,0,0" IsHitTestVisible="True"/>
+                <TextBox Style="{DynamicResource EditTaskName}" x:Name="Description" Text="Description" Canvas.Left="55" Canvas.Top="404" FontSize="18" Height="78" Width="634" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,0,0"/>
+                <Label Content="Deadline" Canvas.Left="111" Canvas.Top="210" HorizontalAlignment="Center" VerticalAlignment="Top" Width="109" FontSize="20"/>
+                <Label Content="Category" Canvas.Left="111" Canvas.Top="265" HorizontalAlignment="Center" VerticalAlignment="Top" Width="109" FontSize="20"/>
+                <Label Content="Priority" Canvas.Left="111" Canvas.Top="334" HorizontalAlignment="Center" VerticalAlignment="Top" Width="109" FontSize="20"/>
+                <ComboBox x:Name="CategoryCB" Height="37" Canvas.Left="226" Canvas.Top="267" Width="469" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                <DatePicker Height="30" Canvas.Left="227" Canvas.Top="213" Width="468" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                <Button Style="{DynamicResource CompleteBTN}" x:Name="LowBTN" Content="Low" Height="37" Canvas.Left="234" Canvas.Top="334" Width="122" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Background="#FF72ABA8"/>
+                <Button Style="{DynamicResource CompleteBTN}" x:Name="MedBTN" Content="Medium" Height="37" Canvas.Left="377" Canvas.Top="334" Width="122" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Background="#FFC99F32"/>
+                <Button Style="{DynamicResource CompleteBTN}" x:Name="HighBTN" Content="High" Height="37" Canvas.Left="521" Canvas.Top="334" Width="122" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Background="#FFCE533E"/>
+                <Button Style="{DynamicResource ExitBTN}" x:Name="ExitTN" Height="47" Canvas.Left="760" Canvas.Top="52" Width="52" HorizontalAlignment="Center" VerticalAlignment="Top" BorderBrush="Transparent" Click="ExitTN_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Assets/cancel.png" Stretch="Uniform"/>
+                    </Button.Background>
+                </Button>
+                <Button Style="{DynamicResource CancelBTN}" x:Name="DeleteBTN" Content="Delete" Height="50" Canvas.Left="529" Canvas.Top="506" Width="132" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
+                <Button Style="{DynamicResource CompleteBTN}" x:Name="SaveBTN" Content="Save" Height="50" Canvas.Left="684" Canvas.Top="506" Width="132" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
+                <Label Style="{DynamicResource Header}" Content="Add/Edit" Canvas.Left="55" Canvas.Top="60" Width="188" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold"/>
+            </Canvas>
+        </Border>
     </Grid>
 </UserControl>
