@@ -24,6 +24,8 @@ namespace ToDoProject
         //for the dates in the stackpanel
         private List<Border> dateBorders = new List<Border>();
         private DateTime currentDate = DateTime.Today;
+
+        //CHANGE THE FILE PATH BEFORE RUNNING THE CODE
         private string toDoList = "C:\\Users\\Elisha\\source\\repos\\ToDoProject\\ToDoProject\\Assets\\ToDoList.txt";
         public Page3()
         {
@@ -60,7 +62,7 @@ namespace ToDoProject
                 Text = $"{date:ddd}\n{date:dd}",
                 FontSize = 18,
                 FontWeight = FontWeights.Bold,
-                Foreground = isCenter ? Brushes.White : Brushes.Black,
+                Foreground = Brushes.White,
                 TextAlignment = TextAlignment.Center
             };
 
@@ -68,8 +70,8 @@ namespace ToDoProject
             {
                 Width = isCenter ? 100 : 80, //bigger center
                 Height = isCenter ? 130 : 90,
-                Background = isCenter ? Brushes.Gray : Brushes.LightGray, //ignore the colors first
-                BorderBrush = Brushes.Black,
+                Background = isCenter ? Brushes.LightSeaGreen : Brushes.SlateGray,
+                BorderBrush = isCenter ? Brushes.LightSeaGreen : Brushes.SlateGray,
                 BorderThickness = new Thickness(1),
                 CornerRadius = new CornerRadius(5),
                 Child = textBlock,
@@ -85,18 +87,13 @@ namespace ToDoProject
             Border clickedBorder = sender as Border;
             int index = (int)clickedBorder.Tag;
 
-            if (index == 0) return;
+            //if (index == 0) return;
 
             currentDate = currentDate.AddDays(index);
             InitializeDateBorders();
 
             PopulateToDoList(currentDate, 1);
             lbl_Month.Content = currentDate.ToString("MMMM"); //changes the month label content
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
         }
         //end of stackpanel dates
 
@@ -156,9 +153,17 @@ namespace ToDoProject
             //only the selected date
             List<(string name, string time, string date, string category, string priority, bool status)> tasks = new List<(string, string, string, string, string, bool)>();
 
-            foreach ((string, string, string, string, string, bool) task in formattedTasks) //all/status=1
+            //theres prolly a better way to do this but ehhhhh
+            //all
+            foreach ((string, string, string, string, string, bool) task in formattedTasks)
             {
-                if (task.Item3 == selectedDate.ToString("yyyy-MM-dd"))
+                if (task.Item3 == selectedDate.ToString("yyyy-MM-dd") && !task.Item6) //incomplete first
+                    tasks.Add(task);
+            }
+
+            foreach ((string, string, string, string, string, bool) task in formattedTasks)
+            {
+                if (task.Item3 == selectedDate.ToString("yyyy-MM-dd") && task.Item6) //then complete
                     tasks.Add(task);
             }
 
@@ -193,8 +198,8 @@ namespace ToDoProject
                     HorizontalAlignment = HorizontalAlignment.Left,
                     Width = 1055,
                     Height = 100,
-                    Background = Brushes.Transparent,
-                    BorderBrush = Brushes.Black,
+                    Background = Brushes.White,
+                    BorderBrush = Brushes.LightSeaGreen,
                     BorderThickness = new Thickness(2),
                     Margin = new Thickness(6),
                     CornerRadius = new CornerRadius(10),
@@ -216,7 +221,7 @@ namespace ToDoProject
                 TextBlock catName = new TextBlock
                 {
                     Text = task.Item4, //wtv u put for the category
-                    Foreground = Brushes.LightGray,
+                    Foreground = Brushes.SlateGray,
                     FontWeight = FontWeights.Bold,
                     FontSize = 18,
                     VerticalAlignment = VerticalAlignment.Center,
@@ -262,6 +267,7 @@ namespace ToDoProject
                 TextBlock edit = new TextBlock
                 {
                     Text = "Edit",
+                    Foreground = Brushes.LightSeaGreen,
                     FontSize = 24,
                     Cursor = Cursors.Hand,
                     HorizontalAlignment = HorizontalAlignment.Center,
@@ -275,7 +281,6 @@ namespace ToDoProject
 
                 CheckBox checkBox = new CheckBox
                 {
-                    //IsChecked = true,
                     IsChecked = task.Item6 ? true : false,
                     Width = 40,
                     Height = 40,
@@ -287,8 +292,8 @@ namespace ToDoProject
                 Grid.SetColumn(checkBox, 0);
                 Grid.SetRowSpan(checkBox, 2);
 
-                //checkBox.Checked += (s, e) => SaveToDoList(checkBox);
-                //checkBox.Unchecked += (s, e) => SaveToDoList(checkBox);
+                checkBox.Checked += (s, e) => SaveToDoList(task.Item1, true);
+                checkBox.Unchecked += (s, e) => SaveToDoList(task.Item1, false);
 
                 taskGrid.Children.Add(checkBox);
                 taskGrid.Children.Add(catName);
@@ -303,21 +308,26 @@ namespace ToDoProject
             }
         }
 
-        private void SaveToDoList(CheckBox cBox) //FIX THIS REEEEE
+        private void SaveToDoList(string taskName, bool isChecked)
         {
             string[] allLines = File.ReadAllLines(toDoList);
+            List<string> updatedLines = new List<string>();
 
-            using (StreamWriter sw = new StreamWriter(toDoList, false))
+            foreach (string line in allLines)
             {
-                foreach (string line in allLines)
-                {
-                    string status = "-";
-                    if (cBox.IsPressed) //make this for the specific task
-                        status = "+";
+                string[] parts = line.Split('|');
+                //if (parts.Length < 2) continue;
 
-                    sw.WriteLine(status + line.Substring(1));
-                }
+                string existingTaskName = parts[1];
+                string status = isChecked ? "+" : "-";
+
+                if (existingTaskName == taskName)
+                    updatedLines.Add(status + line.Substring(1));
+                else
+                    updatedLines.Add(line);
             }
+
+            File.WriteAllLines(toDoList, updatedLines);
         }
 
         private void NavButton_Click(object sender, RoutedEventArgs e)
@@ -341,12 +351,12 @@ namespace ToDoProject
 
         private void btn_AddTask_Click(object sender, RoutedEventArgs e)
         {
-
+            //navigate to other page
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-
+            //navigate to other page
         }
     }
 }

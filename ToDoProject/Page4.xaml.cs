@@ -22,6 +22,7 @@ namespace ToDoProject
     /// </summary>
     public partial class Page4 : Page
     {
+        //CHANGE THE FILE PATH BEFORE RUNNING THE CODE
         private DateTime currentDate = DateTime.Today;
         private string toDoList = "C:\\Users\\Elisha\\source\\repos\\ToDoProject\\ToDoProject\\Assets\\ToDoList.txt";
 
@@ -29,12 +30,6 @@ namespace ToDoProject
         {
             InitializeComponent();
             cal_ToDoCal.SelectedDate = currentDate; //selects the current date
-        }
-
-        //show the dots
-        private void cal_ToDoCal_Loaded(object sender, RoutedEventArgs e)
-        {
-            
         }
 
 
@@ -50,14 +45,14 @@ namespace ToDoProject
 
             foreach (string task in unformattedTasks)
             {
-                string[] parts = task.Split('|');
+                string[] part = task.Split('|');
 
-                string status = parts[0];
-                string taskName = parts[1];
-                string taskTime = parts[2];
-                string taskDate = parts[3];
-                string category = parts[4];
-                string priority = parts[5];
+                string status = part[0];
+                string taskName = part[1];
+                string taskTime = part[2];
+                string taskDate = part[3];
+                string category = part[4];
+                string priority = part[5];
 
                 formattedTasks.Add((taskName, taskTime, taskDate, category, priority));
             }
@@ -173,7 +168,7 @@ namespace ToDoProject
 
         private void btn_AddTask_Click(object sender, RoutedEventArgs e)
         {
-
+            //navigate to add task page
         }
     }
 }

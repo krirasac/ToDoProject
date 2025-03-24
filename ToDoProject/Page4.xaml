@@ -26,7 +26,7 @@
         </Style>
     </Page.Resources>
 
-    <Grid Background="White">
+    <Grid Background="#F0F0F0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="1170"/>
@@ -39,8 +39,7 @@
           DisplayMode="Month"
           IsTodayHighlighted="True"
           SelectionMode="SingleDate"
-                      SelectedDatesChanged="cal_ToDoCal_SelectedDatesChanged"
-                      Loaded="cal_ToDoCal_Loaded">
+                      SelectedDatesChanged="cal_ToDoCal_SelectedDatesChanged">
             </Calendar>
         </Viewbox>
 
@@ -65,5 +64,7 @@
                HorizontalAlignment="Center"
                VerticalAlignment="Center"/>
         </Border>
+
+        <Frame x:Name="Frame" NavigationUIVisibility="Hidden" Grid.Column="1" Width="1170"/>
     </Grid>
 </Page>

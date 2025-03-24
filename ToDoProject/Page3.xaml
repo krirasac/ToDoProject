@@ -11,7 +11,7 @@
     <Page.Resources>
         <Style x:Key="ButtonStyle" TargetType="Button">
             <Setter Property="Width" Value="100"/>
-            <Setter Property="Height" Value="40"/>
+            <Setter Property="Height" Value="35"/>
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
@@ -59,7 +59,7 @@
             <Setter Property="FontSize" Value="35"/>
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Foreground" Value="LightSeaGreen"/>
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Template">
                 <Setter.Value>
@@ -97,7 +97,7 @@
         </Style>
     </Page.Resources>
 
-    <Grid Background="White">
+    <Grid Background="#F0F0F0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="1170"/>
@@ -107,7 +107,7 @@
         <!--ignore this it's only for me-->
         <Rectangle Grid.Column="0" Fill="AliceBlue"/>
 
-        <ScrollViewer Grid.Column="1" Background="Transparent" VerticalScrollBarVisibility="Auto" Margin="38,410,47,235" Width="1085">
+        <ScrollViewer Grid.Column="1" Background="Transparent" VerticalScrollBarVisibility="Auto" Margin="38,426,47,219" Width="1085" Height="175">
             <Grid>
                 <StackPanel x:Name="ToDoListPanel" Orientation="Vertical" VerticalAlignment="Stretch"/>
             </Grid>
@@ -148,5 +148,7 @@ MouseLeftButtonDown="btn_AddTask_Click">
         <Label x:Name="lbl_Month" Grid.Column="1" FontSize="28" FontWeight="Bold" Content="Month" HorizontalAlignment="Left" Margin="135,94,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btn_BackDate" Style="{StaticResource NavButtonStyle}" Grid.Column="1" Content="◀" Margin="885,107,245,673" Click="ShiftWeek"/>
         <Button x:Name="btn_ForwDate" Style="{StaticResource NavButtonStyle}" Grid.Column="1" Content="▶" Margin="946,107,184,673" Click="ShiftWeek"/>
+
+        
     </Grid>
 </Page>
