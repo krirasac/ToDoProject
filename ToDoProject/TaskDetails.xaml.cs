@@ -45,7 +45,7 @@ namespace ToDoProject
 
         public void DisplayTaskContent()
         {
-            DateTime taskDate = DateTime.Parse(DT); 
+            DateTime taskDate = DateTime.Parse(DT);
             string formattedDate = taskDate.ToString("yyyy-MM-dd");
 
             Name.Content = TN;
@@ -61,14 +61,20 @@ namespace ToDoProject
             {
                 MoreMenu.Visibility = Visibility.Visible;
                 openMenu = true;
+                UpdateDoneButtonContent();
             }
-
-            else if (openMenu)
+            else
             {
                 MoreMenu.Visibility = Visibility.Collapsed;
                 openMenu = false;
             }
-            
+        }
+        private void UpdateDoneButtonContent()
+        {
+            if (parentPage.CompletedTasksList.SelectedItem != null)
+                DoneButton.Content = "Mark as Undone";
+            else
+                DoneButton.Content = "Mark as Done";
         }
 
         private void BackBTN_Click(object sender, RoutedEventArgs e)
@@ -104,15 +110,15 @@ namespace ToDoProject
 
             if (index != -1 && listToUpdate != null && index < listToUpdate.Count)
             {
-                string taskName = listToUpdate[index]; 
+                string taskName = listToUpdate[index];
                 listToUpdate.RemoveAt(index);
-                parentPage.UpdateListBox();  
+                parentPage.UpdateListBox();
 
                 for (int i = 0; i < fm.sList.Count; i++)
                 {
                     if (fm.sList[i][1] == taskName)
                     {
-                        fm.sList.RemoveAt(i);  
+                        fm.sList.RemoveAt(i);
                         break;
                     }
                 }
@@ -124,46 +130,92 @@ namespace ToDoProject
         }
 
         private Page1 parentPage;
+
         private void Done_Button_Click(object sender, RoutedEventArgs e)
         {
             List<string> listToUpdate = null;
             int index = -1;
+            string taskName = "";
 
-            if (parentPage.LowPriorityList.SelectedItem != null)
+            if (parentPage.CompletedTasksList.SelectedItem != null)
             {
-                index = parentPage.LowPriorityList.SelectedIndex;
-                listToUpdate = parentPage.Low;
+                index = parentPage.CompletedTasksList.SelectedIndex;
+                listToUpdate = parentPage.done; 
             }
-            else if (parentPage.MediumPriorityList.SelectedItem != null)
+            else
             {
-                index = parentPage.MediumPriorityList.SelectedIndex;
-                listToUpdate = parentPage.Medium;
-            }
-            else if (parentPage.HighPriorityList.SelectedItem != null)
-            {
-                index = parentPage.HighPriorityList.SelectedIndex;
-                listToUpdate = parentPage.High;
+                if (parentPage.LowPriorityList.SelectedItem != null)
+                {
+                    index = parentPage.LowPriorityList.SelectedIndex;
+                    listToUpdate = parentPage.Low;
+                }
+                else if (parentPage.MediumPriorityList.SelectedItem != null)
+                {
+                    index = parentPage.MediumPriorityList.SelectedIndex;
+                    listToUpdate = parentPage.Medium;
+                }
+                else if (parentPage.HighPriorityList.SelectedItem != null)
+                {
+                    index = parentPage.HighPriorityList.SelectedIndex;
+                    listToUpdate = parentPage.High;
+                }
             }
 
             if (index != -1 && listToUpdate != null && index < listToUpdate.Count)
             {
-                string taskName = listToUpdate[index];
+                taskName = listToUpdate[index];
                 listToUpdate.RemoveAt(index); 
-                parentPage.UpdateListBox(); 
-                parentPage.done.Add(taskName);
 
-                for (int i = 0; i < fm.sList.Count; i++)
+                if (DoneButton.Content.ToString() == "Mark as Undone")
                 {
-                    if (fm.sList[i][1] == taskName) 
-                    {
-                        fm.sList[i][0] = "+"; break;
-                    }
-                }
+                    string taskPriority = "";
 
+                    for (int i = 0; i < fm.sList.Count; i++)
+                    {
+                        if (fm.sList[i][1] == taskName)
+                        {
+                            taskPriority = fm.sList[i][5];
+                            break;
+                        }
+                    }
+
+                    if (taskPriority == "Low")
+                        parentPage.Low.Add(taskName);
+                    else if (taskPriority == "Medium")
+                        parentPage.Medium.Add(taskName);
+                    else if (taskPriority == "High")
+                        parentPage.High.Add(taskName);
+
+                    for (int i = 0; i < fm.sList.Count; i++)
+                    {
+                        if (fm.sList[i][1] == taskName)
+                        {
+                            fm.sList[i][0] = "-";
+                            break;
+                        }
+                    }
+                    MessageBox.Show($"Task '{taskName}' has been marked as undone.");
+                }
+                else
+                {
+                    parentPage.done.Add(taskName);
+                    parentPage.UpdateListBox();
+
+                    for (int i = 0; i < fm.sList.Count; i++)
+                    {
+                        if (fm.sList[i][1] == taskName)
+                        {
+                            fm.sList[i][0] = "+"; // Mark as done
+                            break;
+                        }
+                    }
+                    MessageBox.Show($"Task '{taskName}' has been marked as completed.");
+                }
                 fm.RewriteSList();
-                MessageBox.Show($"Task '{taskName}' has been marked as completed.");
-                ((Grid)this.Parent).Children.Remove(this);
+                parentPage.UpdateListBox();
+                ((Grid)this.Parent).Children.Remove(this); 
             }
         }
+
     }
 }

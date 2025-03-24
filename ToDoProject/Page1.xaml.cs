@@ -90,7 +90,6 @@ namespace ToDoProject
             }
         }
 
-
         public void UpdateListBox()
         {
             HighPriorityList.ItemsSource = null; 
