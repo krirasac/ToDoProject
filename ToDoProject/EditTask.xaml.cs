@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -52,16 +53,29 @@ namespace ToDoProject
 
         private FileManager fm = new FileManager();
 
+        private string UniqueTaskName(string taskName)
+        {
+            int counter = 1;
+            string uniqueName = taskName;
+            while (parentPage.High.Contains(uniqueName) || parentPage.Medium.Contains(uniqueName) || parentPage.Low.Contains(uniqueName) || parentPage.done.Contains(uniqueName))
+            {
+                uniqueName = $"{taskName} ({counter})";
+                counter++;
+            }
+            return uniqueName;
+        }
+
         private void SaveBTN_Click(object sender, RoutedEventArgs e)
         {
             string name = NameInput.Text;
             DateTime deadline = DeadlinePicker.SelectedDate ?? DateTime.MinValue;
+            DateTime dateOnly = deadline.Date;
+            string formattedDate = dateOnly.ToString("yyyy-MM-dd");  
             string category = CategoryCB.SelectedItem != null ? CategoryCB.SelectedItem.ToString() : "No Category";
             string description = DescriptionInput.Text;
 
-            Task newTask = new Task(name, deadline, category, selectedPriority, description);
-
-            parentPage.AddTaskToList(newTask);
+            string uniqueName = UniqueTaskName(name);
+            Task newTask = new Task(uniqueName, dateOnly, category, selectedPriority, description);
 
             MessageBox.Show("Task Saved:\n" +
                             "Name: " + newTask.Name + "\n" +
@@ -70,15 +84,17 @@ namespace ToDoProject
                             "Priority: " + newTask.Priority + "\n" +
                             "Description: " + newTask.Description);
 
-            fm.list.Add($"{newTask.Name}|{newTask.Deadline}|{newTask.Category}|{newTask.Priority}|{newTask.Description}");
+            fm.list.Add($"-|{newTask.Name}|11:59 PM|{formattedDate}|{newTask.Category}|{newTask.Priority}|{newTask.Description}");
             fm.WriteFile(fm.list);
-            
             if (newTask.Priority == "High")
                 parentPage.High.Add(newTask.Name);
             else if (newTask.Priority == "Medium")
                 parentPage.Medium.Add(newTask.Name);
             else if (newTask.Priority == "Low")
                 parentPage.Low.Add(newTask.Name);
+
+            parentPage.UpdateListBox();
+            ((Grid)this.Parent).Children.Remove(this);
 
         }
 

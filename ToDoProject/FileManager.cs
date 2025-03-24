@@ -9,7 +9,7 @@ using System.Windows.Shapes;
 
 namespace ToDoProject
 {
-    internal class FileManager
+    public class FileManager
     {
         public List<string> list = new List<string>();
         public List<string[]> sList= new List<string[]>();
@@ -54,5 +54,6 @@ namespace ToDoProject
             }
 
         }
+
     }
 }

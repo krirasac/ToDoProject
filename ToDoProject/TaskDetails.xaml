@@ -23,9 +23,9 @@
             <Label x:Name="PriorityLB" Content="Priority" Height="28" Width="80" Canvas.Left="610" Canvas.Top="320" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         </Canvas>
         <Canvas x:Name="MoreMenu" Background="White" HorizontalAlignment="Left" Height="184" Margin="1088,68,0,0" VerticalAlignment="Top" Width="219" Visibility="Hidden">
-            <Button Content="Mark as Done" Height="38" Canvas.Left="18" Canvas.Top="26" Width="187" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15"/>
+            <Button Content="Mark as Done" Height="38" Canvas.Left="18" Canvas.Top="26" Width="187" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15" Click="Done_Button_Click"/>
             <Button Content="Edit Task" Height="36" Canvas.Left="18" Canvas.Top="74" Width="187" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15"/>
-            <Button Content="Delete Task" Height="36" Canvas.Left="18" Canvas.Top="122" Width="187" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15"/>
+            <Button Content="Delete Task" Height="36" Canvas.Left="18" Canvas.Top="122" Width="187" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15" Click="Delete_Button_Click"/>
         </Canvas>
     </Grid>
 </UserControl>
