@@ -22,6 +22,7 @@ namespace ToDoProject
         public void ReadAndSortFile()
         {
             ReadFile(); 
+            sList.Clear();
             for (int x = 0; x < list.Count; x++)
             {
                 string[] thing = list[x].Split('|');

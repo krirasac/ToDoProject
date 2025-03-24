@@ -29,15 +29,6 @@ namespace ToDoProject
             DisplayTaskContent(name, date, desc, priority, category);
         }
 
-        private void DisplayTaskDetails(EditTask.Task task)
-        {
-            if (task == null) return;
-
-            DateTimeLB.Content = task.Deadline.ToShortDateString();
-            CategoryLB.Content = task.Category;
-            PriorityLB.Content = task.Priority;
-        }
-
         public void DisplayTaskContent(string name, string date, string desc, string priority, string category)
         {
             Name.Content = name;
@@ -46,7 +37,6 @@ namespace ToDoProject
             CategoryLB.Content = category;
             PriorityLB.Content = priority;
         }
-
 
         private void MoreBTN_Click(object sender, RoutedEventArgs e)
         {

@@ -112,6 +112,7 @@ namespace ToDoProject
         {
             if (sender is ListBox LB)
             {
+                fm.ReadAndSortFile();
                 int index = 0;
                 string LoMeHi = "";
                 List<string[]> list = new List<string[]>();

@@ -72,13 +72,14 @@ namespace ToDoProject
 
             fm.list.Add($"{newTask.Name}|{newTask.Deadline}|{newTask.Category}|{newTask.Priority}|{newTask.Description}");
             fm.WriteFile(fm.list);
+            
             if (newTask.Priority == "High")
                 parentPage.High.Add(newTask.Name);
             else if (newTask.Priority == "Medium")
                 parentPage.Medium.Add(newTask.Name);
             else if (newTask.Priority == "Low")
                 parentPage.Low.Add(newTask.Name);
-            
+
         }
 
         private void LowBTN_Click(object sender, RoutedEventArgs e)
