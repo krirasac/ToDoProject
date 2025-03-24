@@ -49,6 +49,7 @@
         <Image Source="/Assets/calendar.png" HorizontalAlignment="Left" Height="29" Margin="28,293,0,0" VerticalAlignment="Top" Width="28"/>
 
         <Border Style="{DynamicResource NavShadowBlur}" Grid.Column="1">
+            <Frame x:Name="MainFrame" Width="1170" Height="800"/>
         </Border>
         <Canvas x:Name="PopBG" Style="{DynamicResource PopUp}" Grid.ColumnSpan="2" Visibility="Collapsed"/>
     </Grid>
