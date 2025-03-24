@@ -24,7 +24,10 @@ namespace ToDoProject
         private FileManager fm = new FileManager();
         public List<string> High = new List<string>();
         public List<string> Medium = new List<string>();
-        public List<string> Low = new List<string>();
+        public List<string> Low = new List<string>(); 
+        public List<string> done = new List<string>();
+
+
 
         public Page1(MainWindow main)
         {
@@ -38,18 +41,26 @@ namespace ToDoProject
             High.Clear(); Medium.Clear(); Low.Clear();
             for (int x = 0; x < fm.sList.Count(); x++)
             {
-                if (fm.sList[x][3] == "High")
-                    High.Add(fm.sList[x][0]);
-                else if (fm.sList[x][3] == "Medium")
-                    Medium.Add(fm.sList[x][0]);
-                else if (fm.sList[x][3] == "Low")
-                    Low.Add(fm.sList[x][0]);
+                if (fm.sList[x][5] == "1")
+                {
+                    if (fm.sList[x][3] == "High")
+                        High.Add(fm.sList[x][0]);
+                    else if (fm.sList[x][3] == "Medium")
+                        Medium.Add(fm.sList[x][0]);
+                    else if (fm.sList[x][3] == "Low")
+                        Low.Add(fm.sList[x][0]);
+                }
+                else if (fm.sList[x][5] == "2")
+                {
+                    done.Add(fm.sList[x][0]);
+                }
             }
-
+            CompletedTasksList.ItemsSource = done;
             HighPriorityList.ItemsSource = High;
             MediumPriorityList.ItemsSource = Medium;
             LowPriorityList.ItemsSource = Low;
         }
+
 
         private void MedAddBTN_Click(object sender, RoutedEventArgs e)
         {
@@ -132,12 +143,28 @@ namespace ToDoProject
                     index = HighPriorityList.SelectedIndex;
                     LoMeHi = "High";
                 }
-               
-                for (int i = 0; i < fm.sList.Count; i++)
+                else if (LB.Name == "CompleteleTasksList")
                 {
-                    if (fm.sList[i][3] == LoMeHi)
-                        list.Add(fm.sList[i]);
+                    index = CompletedTasksList.SelectedIndex;
                 }
+
+                if (LB.Name != "CompletedTasksList")
+                {
+                    for (int i = 0; i < fm.sList.Count; i++)
+                    {
+                        if (fm.sList[i][3] == LoMeHi)
+                            list.Add(fm.sList[i]);
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < fm.sList.Count; i++)
+                    {
+                        if (fm.sList[i][5] == "2")
+                            list.Add(fm.sList[i]);
+                    }
+                }
+                    
                 main.MainGrid.Children.Add(new TaskDetails(list[index][0], list[index][1], list[index][2], list[index][3], list[index][4]));
             }
         }
