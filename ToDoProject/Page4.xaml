@@ -11,15 +11,16 @@
     <Page.Resources>
         <Style x:Key="CircleBorderStyle" TargetType="Border">
             <Setter Property="CornerRadius" Value="50"/>
-            <Setter Property="Background" Value="Gray"/>
-            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="Background" Value="LightSeaGreen"/>
+            <Setter Property="BorderBrush" Value="LightSeaGreen"/>
             <Setter Property="BorderThickness" Value="2"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
 
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="DarkGray"/>
+                    <Setter Property="Background" Value="#F3A8A8"/>
+                    <Setter Property="BorderBrush" Value="#F3A8A8"/>
                 </Trigger>
             </Style.Triggers>
         </Style>

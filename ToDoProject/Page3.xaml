@@ -39,15 +39,16 @@
 
         <Style x:Key="CircleBorderStyle" TargetType="Border">
             <Setter Property="CornerRadius" Value="50"/>
-            <Setter Property="Background" Value="Gray"/>
-            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="Background" Value="LightSeaGreen"/>
+            <Setter Property="BorderBrush" Value="LightSeaGreen"/>
             <Setter Property="BorderThickness" Value="2"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
 
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="DarkGray"/>
+                    <Setter Property="Background" Value="#F3A8A8"/>
+                    <Setter Property="BorderBrush" Value="#F3A8A8"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
@@ -130,9 +131,9 @@ MouseLeftButtonDown="btn_AddTask_Click">
        VerticalAlignment="Center"/>
         </Border>
 
-        <Button Style="{StaticResource ButtonStyle}" Content="All" Grid.Column="1" Margin="835,365,235,415"/>
-        <Button Style="{StaticResource ButtonStyle}" Content="Ongoing" Grid.Column="1" Margin="916,365,154,415"/>
-        <Button Style="{StaticResource ButtonStyle}" Content="Complete" Grid.Column="1" Margin="1021,365,49,415"/>
+        <Button x:Name="btn_All" Style="{StaticResource ButtonStyle}" Content="All" Grid.Column="1" Margin="835,365,235,415" Click="NavButton_Click"/>
+        <Button x:Name="btn_Ong" Style="{StaticResource ButtonStyle}" Content="Ongoing" Grid.Column="1" Margin="916,365,154,415" Click="NavButton_Click"/>
+        <Button x:Name="btn_Com" Style="{StaticResource ButtonStyle}" Content="Complete" Grid.Column="1" Margin="1021,365,49,415" Click="NavButton_Click"/>
 
         <StackPanel x:Name="DateStackPanel" 
                     Background="Transparent"

@@ -30,7 +30,7 @@ namespace ToDoProject
             InitializeComponent();
             InitializeDateBorders();
             lbl_Month.Content = currentDate.ToString("MMMM");
-            PopulateToDoList(currentDate);
+            PopulateToDoList(currentDate, 1);
         }
 
         //start of dates in the stackpanel
@@ -90,7 +90,7 @@ namespace ToDoProject
             currentDate = currentDate.AddDays(index);
             InitializeDateBorders();
 
-            PopulateToDoList(currentDate);
+            PopulateToDoList(currentDate, 1);
             lbl_Month.Content = currentDate.ToString("MMMM"); //changes the month label content
         }
 
@@ -116,45 +116,77 @@ namespace ToDoProject
         }
 
         //show tasks in the stackpanel
-        private List<(string, string, string, string, string)> FormatTasks(string[] unformattedTasks)
+        private List<(string, string, string, string, string, bool)> FormatTasks(string[] unformattedTasks)
         {
-            List<(string name, string time, string date, string category, string priority)> formattedTasks = new List<(string, string, string, string, string)>();
+            List<(string name, string time, string date, string category, string priority, bool status)> formattedTasks = new List<(string, string, string, string, string, bool)>();
 
             foreach (string task in unformattedTasks)
             {
                 string[] parts = task.Split('|');
 
-                string status = parts[0];
+                bool status;
+                if (parts[0] == "+")
+                    status = true;
+                else
+                    status = false;
+
                 string taskName = parts[1];
                 string taskTime = parts[2];
                 string taskDate = parts[3];
                 string category = parts[4];
                 string priority = parts[5];
 
-                formattedTasks.Add((taskName, taskTime, taskDate, category, priority));
+                formattedTasks.Add((taskName, taskTime, taskDate, category, priority, status));
             }
 
             return formattedTasks;
         }
 
-        private void PopulateToDoList(DateTime selectedDate)
+        private void PopulateToDoList(DateTime selectedDate, int status)
         {
+            //status 1 = all
+            //status 2 = ongoing
+            //status 3 = completed
+
             ToDoListPanel.Children.Clear();
 
             string[] unformattedTasks = File.ReadAllLines(toDoList);
-            List<(string name, string time, string date, string category, string priority)> formattedTasks = FormatTasks(unformattedTasks);
+            List<(string name, string time, string date, string category, string priority, bool status)> formattedTasks = FormatTasks(unformattedTasks);
 
             //only the selected date
-            List<(string name, string time, string date, string category, string priority)> tasks = new List<(string, string, string, string, string)>();
+            List<(string name, string time, string date, string category, string priority, bool status)> tasks = new List<(string, string, string, string, string, bool)>();
 
-            foreach ((string, string, string, string, string) task in formattedTasks)
+            foreach ((string, string, string, string, string, bool) task in formattedTasks) //all/status=1
             {
                 if (task.Item3 == selectedDate.ToString("yyyy-MM-dd"))
                     tasks.Add(task);
             }
 
+            if (status == 2) //ongoing
+            {
+                for (int i = 0; i < tasks.Count; i++)
+                {
+                    if (tasks[i].Item6 == true)
+                    {
+                        tasks.Remove(tasks[i]);
+                        i--;
+                    }
+                }
+            }
+            else if (status == 3) //completed
+            {
+                for (int i = 0; i < tasks.Count; i++)
+                {
+                    if (tasks[i].Item6 == false)
+                    {
+                        tasks.Remove(tasks[i]);
+                        i--;
+                    }
+                }
+            }
+
             //add the correct tasks to the stackpanel
-            foreach ((string, string, string, string, string) task in tasks)
+            foreach ((string, string, string, string, string, bool) task in tasks)
             {
                 Border taskBorder = new Border
                 {
@@ -243,6 +275,8 @@ namespace ToDoProject
 
                 CheckBox checkBox = new CheckBox
                 {
+                    //IsChecked = true,
+                    IsChecked = task.Item6 ? true : false,
                     Width = 40,
                     Height = 40,
                     HorizontalAlignment = HorizontalAlignment.Center,
@@ -252,6 +286,9 @@ namespace ToDoProject
                 checkBox.Style = (Style)FindResource("RoundCheckBox");
                 Grid.SetColumn(checkBox, 0);
                 Grid.SetRowSpan(checkBox, 2);
+
+                //checkBox.Checked += (s, e) => SaveToDoList(checkBox);
+                //checkBox.Unchecked += (s, e) => SaveToDoList(checkBox);
 
                 taskGrid.Children.Add(checkBox);
                 taskGrid.Children.Add(catName);
@@ -263,6 +300,42 @@ namespace ToDoProject
                 taskBorder.Child = taskGrid;
 
                 ToDoListPanel.Children.Add(taskBorder);
+            }
+        }
+
+        private void SaveToDoList(CheckBox cBox) //FIX THIS REEEEE
+        {
+            string[] allLines = File.ReadAllLines(toDoList);
+
+            using (StreamWriter sw = new StreamWriter(toDoList, false))
+            {
+                foreach (string line in allLines)
+                {
+                    string status = "-";
+                    if (cBox.IsPressed) //make this for the specific task
+                        status = "+";
+
+                    sw.WriteLine(status + line.Substring(1));
+                }
+            }
+        }
+
+        private void NavButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button btn)
+            {
+                switch (btn.Name)
+                {
+                    case "btn_All":
+                        PopulateToDoList(currentDate, 1);
+                        break;
+                    case "btn_Ong":
+                        PopulateToDoList(currentDate, 2);
+                        break;
+                    case "btn_Com":
+                        PopulateToDoList(currentDate, 3);
+                        break;
+                }
             }
         }
 
