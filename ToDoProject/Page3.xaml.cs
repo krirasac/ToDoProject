@@ -26,7 +26,7 @@ namespace ToDoProject
         private DateTime currentDate = DateTime.Today;
 
         //CHANGE THE FILE PATH BEFORE RUNNING THE CODE
-        private string toDoList = "C:\\Users\\Elisha\\source\\repos\\ToDoProject\\ToDoProject\\Assets\\ToDoList.txt";
+        private string toDoList = "C:\\Users\\Elisha\\source\\repos\\ToDoProject\\ToDoProject\\Assets\\message.txt";
         public Page3()
         {
             InitializeComponent();
@@ -110,6 +110,7 @@ namespace ToDoProject
 
             InitializeDateBorders();
             lbl_Month.Content = currentDate.ToString("MMMM");
+            PopulateToDoList(currentDate, 1);
         }
 
         //show tasks in the stackpanel
