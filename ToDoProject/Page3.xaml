@@ -1,0 +1,154 @@
+﻿<Page x:Class="ToDoProject.Page3"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ToDoProject"
+      mc:Ignorable="d" 
+      d:DesignWidth="1420" d:DesignHeight="820"
+      Title="Page3">
+
+    <Page.Resources>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <TextBlock x:Name="TextBlockContent"
+                           Text="{TemplateBinding Content}" 
+                           Foreground="{TemplateBinding Foreground}" 
+                           FontSize="{TemplateBinding FontSize}"
+                           TextDecorations="None"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"/>
+                        <ControlTemplate.Triggers>
+                            <Trigger SourceName="TextBlockContent" Property="IsMouseOver" Value="True">
+                                <Setter TargetName="TextBlockContent" Property="TextDecorations" Value="Underline"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="CircleBorderStyle" TargetType="Border">
+            <Setter Property="CornerRadius" Value="50"/>
+            <Setter Property="Background" Value="LightSeaGreen"/>
+            <Setter Property="BorderBrush" Value="LightSeaGreen"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#F3A8A8"/>
+                    <Setter Property="BorderBrush" Value="#F3A8A8"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="NavButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="40"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontSize" Value="35"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Foreground" Value="LightSeaGreen"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <TextBlock x:Name="NavButtonText"
+                           Text="{TemplateBinding Content}" 
+                           Foreground="{TemplateBinding Foreground}" 
+                           FontSize="{TemplateBinding FontSize}"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="RoundCheckBox" TargetType="CheckBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="CheckBox">
+                        <Border Width="40" Height="40" CornerRadius="20" BorderBrush="Black" BorderThickness="2" Background="White">
+                            <Grid>
+                                <Ellipse Fill="Transparent" Stroke="Black" StrokeThickness="2"/>
+                                <TextBlock Text="✓" FontSize="24" FontWeight="Bold" Foreground="Black"
+                                   Visibility="Collapsed" x:Name="CheckMark" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="#F0F0F0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1170"/>
+        </Grid.ColumnDefinitions>
+
+
+        <!--ignore this it's only for me-->
+        <Rectangle Grid.Column="0" Fill="AliceBlue"/>
+
+        <ScrollViewer Grid.Column="1" Background="Transparent" VerticalScrollBarVisibility="Auto" Margin="38,426,47,219" Width="1085" Height="175">
+            <Grid>
+                <StackPanel x:Name="ToDoListPanel" Orientation="Vertical" VerticalAlignment="Stretch"/>
+            </Grid>
+        </ScrollViewer>
+
+        <!--fix this later-->
+        <Border x:Name="btn_AddTask"
+Grid.Column="1"
+Style="{StaticResource CircleBorderStyle}"
+Height="70" Width="70"
+Margin="1044,669,0,0"
+VerticalAlignment="Top"
+HorizontalAlignment="Left"
+        Cursor="Hand"
+MouseLeftButtonDown="btn_AddTask_Click">
+            <TextBlock Text="+" 
+       FontSize="36"
+       FontWeight="Bold"
+       Foreground="White"
+       HorizontalAlignment="Center"
+       VerticalAlignment="Center"/>
+        </Border>
+
+        <Button x:Name="btn_All" Style="{StaticResource ButtonStyle}" Content="All" Grid.Column="1" Margin="835,365,235,415" Click="NavButton_Click"/>
+        <Button x:Name="btn_Ong" Style="{StaticResource ButtonStyle}" Content="Ongoing" Grid.Column="1" Margin="916,365,154,415" Click="NavButton_Click"/>
+        <Button x:Name="btn_Com" Style="{StaticResource ButtonStyle}" Content="Complete" Grid.Column="1" Margin="1021,365,49,415" Click="NavButton_Click"/>
+
+        <StackPanel x:Name="DateStackPanel" 
+                    Background="Transparent"
+            Grid.Column="1"
+            Orientation="Horizontal" 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Top"
+                    Width="700"
+                    Height="159" Margin="0,156,0,0">
+        </StackPanel>
+
+        <Label x:Name="lbl_Month" Grid.Column="1" FontSize="28" FontWeight="Bold" Content="Month" HorizontalAlignment="Left" Margin="135,94,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btn_BackDate" Style="{StaticResource NavButtonStyle}" Grid.Column="1" Content="◀" Margin="885,107,245,673" Click="ShiftWeek"/>
+        <Button x:Name="btn_ForwDate" Style="{StaticResource NavButtonStyle}" Grid.Column="1" Content="▶" Margin="946,107,184,673" Click="ShiftWeek"/>
+
+        
+    </Grid>
+</Page>
