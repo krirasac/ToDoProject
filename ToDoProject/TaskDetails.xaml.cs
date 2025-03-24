@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -115,7 +116,7 @@ namespace ToDoProject
                         break;
                     }
                 }
-                fm.WriteFile(fm.sList.Select(item => string.Join("|", item)).ToList());
+                fm.RewriteSList();
                 MessageBox.Show($"Task '{taskName}' has been deleted.");
                 ((Grid)this.Parent).Children.Remove(this);
 
@@ -125,7 +126,44 @@ namespace ToDoProject
         private Page1 parentPage;
         private void Done_Button_Click(object sender, RoutedEventArgs e)
         {
+            List<string> listToUpdate = null;
+            int index = -1;
 
+            if (parentPage.LowPriorityList.SelectedItem != null)
+            {
+                index = parentPage.LowPriorityList.SelectedIndex;
+                listToUpdate = parentPage.Low;
+            }
+            else if (parentPage.MediumPriorityList.SelectedItem != null)
+            {
+                index = parentPage.MediumPriorityList.SelectedIndex;
+                listToUpdate = parentPage.Medium;
+            }
+            else if (parentPage.HighPriorityList.SelectedItem != null)
+            {
+                index = parentPage.HighPriorityList.SelectedIndex;
+                listToUpdate = parentPage.High;
+            }
+
+            if (index != -1 && listToUpdate != null && index < listToUpdate.Count)
+            {
+                string taskName = listToUpdate[index];
+                listToUpdate.RemoveAt(index); 
+                parentPage.UpdateListBox(); 
+                parentPage.done.Add(taskName);
+
+                for (int i = 0; i < fm.sList.Count; i++)
+                {
+                    if (fm.sList[i][1] == taskName) 
+                    {
+                        fm.sList[i][0] = "+"; break;
+                    }
+                }
+
+                fm.RewriteSList();
+                MessageBox.Show($"Task '{taskName}' has been marked as completed.");
+                ((Grid)this.Parent).Children.Remove(this);
+            }
         }
     }
 }

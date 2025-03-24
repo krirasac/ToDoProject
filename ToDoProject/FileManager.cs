@@ -55,5 +55,17 @@ namespace ToDoProject
 
         }
 
+        public void RewriteSList()
+        {
+            using (StreamWriter sw = new StreamWriter(@"C:\Users\Konmiho\Desktop\OOP Finals\Bananana.txt"))
+            {
+                foreach (string[] task in sList)
+                {
+                    string taskLine = $"{task[0]}|{task[1]}|{task[2]}|{task[3]}|{task[4]}|{task[5]}|{task[6]}";
+                    sw.WriteLine(taskLine);
+                }
+            }
+        }
+
     }
 }
