@@ -168,5 +168,12 @@
   <ItemGroup>
     <Resource Include="Assets\cancel_hover.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\calendar.png" />
+    <Resource Include="Assets\list.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\calendar2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

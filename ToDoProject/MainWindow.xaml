@@ -20,16 +20,35 @@
             <ColumnDefinition Width="250*"/>
             <ColumnDefinition Width="1170*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel>
-            <Label Content="LIST"  Margin="75,50,0,0" FontSize="24" />
-            <Button Content="ALL" x:Name="MW_All_Btn" Margin="80,10,80,0" HorizontalAlignment="Left" FontSize="20"/>
-            <Button Content="CATEGORY" x:Name="MW_Ctgy_Btn" Margin="80,10,60,0" HorizontalAlignment="Left" FontSize="20"/>
-            <Label Content="CALENDAR"  Margin="75,50,0,0" FontSize="24" />
-            <Button Content="WEEKLY" x:Name="MW_Wk_Btn" Margin="80,10,80,0" HorizontalAlignment="Left" FontSize="20"/>
-            <Button Content="MONTHLY" x:Name="MW_Mn_Btn" Margin="80,10,70,0" HorizontalAlignment="Left" FontSize="20"/>
+
+        <StackPanel Style="{DynamicResource NavBG}" Margin="0,0,5,0">
+            <Label Style="{DynamicResource Header}"  Content="LIST"  Margin="70,50,0,0" FontSize="24" FontWeight="Bold" Foreground="#FFF0F0F0" />
+            <DockPanel Height="50">
+                <Button Style="{DynamicResource NavBTN}" Content="ALL" x:Name="MW_All_Btn" Margin="70,5,0,5" HorizontalAlignment="Left" FontSize="20"/>
+                <Label Style="{DynamicResource Counter}" Content="0" x:Name="AllCounter" Margin="80,5,0,5" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="39" VerticalContentAlignment="Center"/>
+            </DockPanel>
+            <DockPanel Height="50">
+                <Button Style="{DynamicResource NavBTN}" Content="PERSONAL" x:Name="MW_Personal_Btn"  Margin="70,5,0,5" HorizontalAlignment="Left" FontSize="20"/>
+                <Label Style="{DynamicResource Counter}" Content="0" x:Name="PersonalCounter" Margin="15,5,0,5" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="39" VerticalContentAlignment="Center"/>
+            </DockPanel>
+            <DockPanel Height="50">
+                <Button Style="{DynamicResource NavBTN}" Content="WORK" x:Name="MW_Work_Btn"  Margin="70,5,0,5" HorizontalAlignment="Left" FontSize="20"/>
+                <Label Style="{DynamicResource Counter}" Content="0" x:Name="WorkCounter" Margin="55,5,0,5" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="39" VerticalContentAlignment="Center" Padding="5,5,5,5"/>
+            </DockPanel>
+            <Label Style="{DynamicResource Header}" Content="CALENDAR"  Margin="70,50,0,0" FontSize="24" FontWeight="Bold" Foreground="#FFF0F0F0" />
+
+            <DockPanel Height="50">
+                <Button  Style="{DynamicResource NavBTN}" Content="WEEKLY" x:Name="MW_Wk_Btn" Margin="70,5,0,5" HorizontalAlignment="Left" FontSize="20"/>
+            </DockPanel>
+            <DockPanel Height="50">
+                <Button Style="{DynamicResource NavBTN}" Content="MONTHLY" x:Name="MW_Mn_Btn" Margin="70,5,0,5" HorizontalAlignment="Left" FontSize="20"/>
+            </DockPanel>
         </StackPanel>
+
+        <Image Source="/Assets/list.png" HorizontalAlignment="Left" Height="28" Margin="28,56,0,0" VerticalAlignment="Top" Width="26"/>
+        <Image Source="/Assets/calendar.png" HorizontalAlignment="Left" Height="29" Margin="28,293,0,0" VerticalAlignment="Top" Width="28"/>
+
         <Border Style="{DynamicResource NavShadowBlur}" Grid.Column="1">
-            <Frame x:Name ="MainFrame" Grid.Column="1" Content="" HorizontalAlignment="Center" Height="804" VerticalAlignment="Center" Width="1170" NavigationUIVisibility="Hidden"/>
         </Border>
         <Canvas x:Name="PopBG" Style="{DynamicResource PopUp}" Grid.ColumnSpan="2" Visibility="Collapsed"/>
     </Grid>
