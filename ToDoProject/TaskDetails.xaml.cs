@@ -234,9 +234,9 @@ namespace ToDoProject
 
         private void Edit_Button_Click(object sender, RoutedEventArgs e)
         {
+            Deleting();
             deleteTrue = true;
             parentPage.editTaskButon();
-            Deleting();
         }
     }
 }
