@@ -38,22 +38,42 @@ namespace ToDoProject
             previous = sender as Button;
         }
 
-        private void changeBG(object sender)
-        {
-            current = sender as Button;
-            current.Foreground = (Brush)new BrushConverter().ConvertFrom("#38A8A3");
-
-            if (previous != null)
-            {
-                previous.Foreground = (Brush)new BrushConverter().ConvertFrom("#191C2E");
-            }
-        }
-
         private void MW_Personal_Btn_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new Page1(this));
             changeBG(sender);
             previous = sender as Button;
         }
+        private void MW_Work_Btn_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new Page1(this));
+            changeBG(sender);
+            previous = sender as Button;
+        }
+
+        private void MW_Wk_Btn_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new Page3());
+            changeBG(sender);
+            previous = sender as Button;
+        }
+
+        private void MW_Mn_Btn_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new Page4());
+            changeBG(sender);
+            previous = sender as Button;
+        }
+        private void changeBG(object sender)
+        {
+            current = sender as Button;
+            current.Foreground = (Brush)new BrushConverter().ConvertFrom("#38A8A3");
+
+            if (previous != null && previous != current)
+            {
+                previous.Foreground = (Brush)new BrushConverter().ConvertFrom("#F0F0F0");
+            }
+        }
+
     }
 }

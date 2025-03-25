@@ -26,7 +26,7 @@ namespace ToDoProject
         private DateTime currentDate = DateTime.Today;
 
         //CHANGE THE FILE PATH BEFORE RUNNING THE CODE
-        private string toDoList = "C:\\Users\\Elisha\\source\\repos\\ToDoProject\\ToDoProject\\Assets\\message.txt";
+        private string toDoList = "D:\\Krizia\\source\\repos\\ToDoProject\\ToDoProject\\Assets\\ToDoList.txt";
         public Page3()
         {
             InitializeComponent();

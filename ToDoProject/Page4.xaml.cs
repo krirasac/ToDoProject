@@ -24,7 +24,7 @@ namespace ToDoProject
     {
         //CHANGE THE FILE PATH BEFORE RUNNING THE CODE
         private DateTime currentDate = DateTime.Today;
-        private string toDoList = "C:\\Users\\Elisha\\source\\repos\\ToDoProject\\ToDoProject\\Assets\\message.txt";
+        private string toDoList = "D:\\Krizia\\source\\repos\\ToDoProject\\ToDoProject\\Assets\\ToDoList.txt";
 
         public Page4()
         {
@@ -89,7 +89,7 @@ namespace ToDoProject
                     Margin = new Thickness(6)
                 };
 
-                taskBorder.MouseLeftButtonDown += (s, e) => TaskBorder_Click(); //in case an event is needed when a task is clicked
+                //taskBorder.MouseLeftButtonDown += (s, e) => TaskBorder_Click(); //in case an event is needed when a task is clicked
 
                 Grid taskGrid = new Grid
                 {

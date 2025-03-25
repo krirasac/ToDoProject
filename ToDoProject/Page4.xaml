@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ToDoProject"
       mc:Ignorable="d" 
-      d:DesignHeight="820" d:DesignWidth="1420"
+      d:DesignHeight="820" d:DesignWidth="1170"
       Title="Page4">
 
     <Page.Resources>
@@ -32,7 +32,7 @@
             <ColumnDefinition Width="1170"/>
         </Grid.ColumnDefinitions>
 
-        <Viewbox Stretch="Uniform" Margin="1,123,309,10" Grid.Column="1">
+        <Viewbox Stretch="Uniform" Margin="0,70,309,25" Grid.Column="1">
             <Calendar x:Name="cal_ToDoCal"
           Background="White"
           Foreground="Black"
@@ -43,7 +43,7 @@
             </Calendar>
         </Viewbox>
 
-        <ScrollViewer VerticalScrollBarVisibility="Auto" CanContentScroll="True" Margin="842,174,31,0" Grid.Column="1" Background="Transparent" Height="596">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" CanContentScroll="True" Margin="842,173,31,51" Grid.Column="1" Background="Transparent" Height="596">
             <StackPanel x:Name="ToDoListPanel" Width="300" VerticalAlignment="Top"/>
         </ScrollViewer>
         <Label Grid.Column="1" Content="TASKS" HorizontalAlignment="Left" Margin="842,82,0,0" VerticalAlignment="Top" FontSize="36"/>
@@ -64,7 +64,5 @@
                HorizontalAlignment="Center"
                VerticalAlignment="Center"/>
         </Border>
-
-        <Frame x:Name="Frame" NavigationUIVisibility="Hidden" Grid.Column="1" Width="1170"/>
     </Grid>
 </Page>

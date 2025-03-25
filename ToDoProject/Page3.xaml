@@ -107,7 +107,7 @@
         <!--ignore this it's only for me-->
         <Rectangle Grid.Column="0" Fill="AliceBlue"/>
 
-        <ScrollViewer Grid.Column="1" Background="Transparent" VerticalScrollBarVisibility="Auto" Margin="38,426,47,219" Width="1085" Height="175">
+        <ScrollViewer Grid.Column="1" Background="Transparent" VerticalScrollBarVisibility="Auto" Margin="36,440,49,177" Width="1085">
             <Grid>
                 <StackPanel x:Name="ToDoListPanel" Orientation="Vertical" VerticalAlignment="Stretch"/>
             </Grid>
@@ -131,9 +131,11 @@ MouseLeftButtonDown="btn_AddTask_Click">
        VerticalAlignment="Center"/>
         </Border>
 
-        <Button x:Name="btn_All" Style="{StaticResource ButtonStyle}" Content="All" Grid.Column="1" Margin="835,365,235,415" Click="NavButton_Click"/>
-        <Button x:Name="btn_Ong" Style="{StaticResource ButtonStyle}" Content="Ongoing" Grid.Column="1" Margin="916,365,154,415" Click="NavButton_Click"/>
-        <Button x:Name="btn_Com" Style="{StaticResource ButtonStyle}" Content="Complete" Grid.Column="1" Margin="1021,365,49,415" Click="NavButton_Click"/>
+        <Canvas Grid.Column="1" Margin="740,365,70,385">
+            <Button x:Name="btn_All" Style="{StaticResource ButtonStyle}" Content="All" Grid.Column="1" Click="NavButton_Click" Canvas.Left="18" Canvas.Top="22" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Button x:Name="btn_Ong" Style="{StaticResource ButtonStyle}" Content="Ongoing" Grid.Column="1" Click="NavButton_Click" Canvas.Left="126" Canvas.Top="20"/>
+            <Button x:Name="btn_Com" Style="{StaticResource ButtonStyle}" Content="Complete" Grid.Column="1" Click="NavButton_Click" Canvas.Left="239" Canvas.Top="18"/>
+        </Canvas>
 
         <StackPanel x:Name="DateStackPanel" 
                     Background="Transparent"
@@ -145,10 +147,10 @@ MouseLeftButtonDown="btn_AddTask_Click">
                     Height="159" Margin="0,156,0,0">
         </StackPanel>
 
-        <Label x:Name="lbl_Month" Grid.Column="1" FontSize="28" FontWeight="Bold" Content="Month" HorizontalAlignment="Left" Margin="135,94,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btn_BackDate" Style="{StaticResource NavButtonStyle}" Grid.Column="1" Content="◀" Margin="885,107,245,673" Click="ShiftWeek"/>
-        <Button x:Name="btn_ForwDate" Style="{StaticResource NavButtonStyle}" Grid.Column="1" Content="▶" Margin="946,107,184,673" Click="ShiftWeek"/>
+        <Label x:Name="lbl_Month" Grid.Column="1" FontSize="28" FontWeight="Bold" Content="Month" HorizontalAlignment="Left" Margin="135,86,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btn_BackDate" Style="{StaticResource NavButtonStyle}" Grid.Column="1" Content="◀" Margin="900,78,235,681" Click="ShiftWeek"/>
+        <Button x:Name="btn_ForwDate" Style="{StaticResource NavButtonStyle}" Grid.Column="1" Content="▶" Margin="956,78,180,681" Click="ShiftWeek"/>
 
-        
+
     </Grid>
 </Page>
