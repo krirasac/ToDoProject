@@ -21,23 +21,54 @@ namespace ToDoProject
     public partial class Page1 : Page
     {
         MainWindow main { get; set; }
+        private FileManager fm = new FileManager();
+        public List<string> High = new List<string>();
+        public List<string> Medium = new List<string>();
+        public List<string> Low = new List<string>(); 
+        public List<string> done = new List<string>();
 
         public Page1(MainWindow main)
         {
             InitializeComponent();
             this.main = main;
+            fm = new FileManager();
+            PopulateListBox();
 
-            LowPriorityList.Items.Add("Hello");
-            LowPriorityList.Items.Add("Nice to Meet You");
+        }
+
+        private void PopulateListBox()
+        {
+            High.Clear(); Medium.Clear(); Low.Clear();
+            for (int x = 0; x < fm.sList.Count(); x++)
+            {
+                if (fm.sList[x][0] == "-")
+                {
+                    if (fm.sList[x][5] == "High")
+                        High.Add(fm.sList[x][1]);
+                    else if (fm.sList[x][5] == "Medium")
+                        Medium.Add(fm.sList[x][1]);
+                    else if (fm.sList[x][5] == "Low")
+                        Low.Add(fm.sList[x][1]);
+                }
+                else if (fm.sList[x][0] == "+")
+                {
+                    done.Add(fm.sList[x][1]);
+                }
+            }
+            CompletedTasksList.ItemsSource = done;
+            HighPriorityList.ItemsSource = High;
+            MediumPriorityList.ItemsSource = Medium;
+            LowPriorityList.ItemsSource = Low;
         }
 
         private void MedAddBTN_Click(object sender, RoutedEventArgs e)
         {
-            EditTask selectedTask = new EditTask(main);
-            main.MainGrid.Children.Add(selectedTask);
+            main.MainGrid.Children.Add(new EditTask(this));
+        }
 
-            Grid.SetColumn(selectedTask, 1);
-            main.PopBG.Visibility = Visibility.Visible;
+        public void editTaskButon()
+        {
+            main.MainGrid.Children.Add(new EditTask(this));
         }
 
         private void ShowCompleteBTN_Click(object sender, RoutedEventArgs e)
@@ -69,14 +100,75 @@ namespace ToDoProject
             }
         }
 
-        private void Sample(object sender, MouseButtonEventArgs e)
+        public void UpdateListBox()
         {
-            TaskDetails selectedTask = new TaskDetails(main);
-            main.MainGrid.Children.Add(selectedTask);
+            HighPriorityList.ItemsSource = null; 
+            MediumPriorityList.ItemsSource = null;
+            LowPriorityList.ItemsSource = null;
+            CompletedTasksList.ItemsSource = null;
 
-            Grid.SetColumn(selectedTask, 1);
-
-            main.PopBG.Visibility = Visibility.Visible;
+            HighPriorityList.ItemsSource = High;
+            MediumPriorityList.ItemsSource = Medium;
+            LowPriorityList.ItemsSource = Low;
+            CompletedTasksList.ItemsSource = done;
         }
+
+        private void DoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            fm.ReadAndSortFile();
+
+            if (sender is ListBox LB)
+            {
+                int index = 0;
+                string LoMeHi = "";
+                List<string[]> list = new List<string[]>();
+
+                if (LB.Name == "LowPriorityList")
+                {
+                    index = LowPriorityList.SelectedIndex;
+                    LoMeHi = "Low";
+                }
+                else if (LB.Name == "MediumPriorityList")
+                {
+                    index = MediumPriorityList.SelectedIndex;
+                    LoMeHi = "Medium";
+                }
+                else if (LB.Name == "HighPriorityList")
+                {
+                    index = HighPriorityList.SelectedIndex;
+                    LoMeHi = "High";
+                }
+                else if (LB.Name == "CompletedTasksList")
+                {
+                    index = CompletedTasksList.SelectedIndex;
+                }
+
+                if (LB.Name != "CompletedTasksList")
+                {
+                    for (int i = 0; i < fm.sList.Count; i++)
+                    {
+                        if (fm.sList[i][0] == "-" && fm.sList[i][5] == LoMeHi)
+                        {
+                            list.Add(fm.sList[i]);
+                        }
+                            
+                    }
+                }
+                else if (LB.Name == "CompletedTasksList")
+                {
+                    for (int i = 0; i < fm.sList.Count; i++)
+                    {
+                        if (fm.sList[i][0] == "+")
+                            list.Add(fm.sList[i]);
+                    }
+                }
+
+
+                main.MainGrid.Children.Add(new TaskDetails(this, fm, list[index][1], list[index][2], list[index][4], list[index][5], list[index][6]));
+
+            }
+        }
+
+
     }
 }

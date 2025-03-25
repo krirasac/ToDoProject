@@ -56,9 +56,9 @@
 
         <Border x:Name="BorderMore" Style="{DynamicResource BorderWithShadowBlur}" Width="219" Margin="867,126,54,502" Visibility="Collapsed">
             <Canvas Style="{DynamicResource CanvaList}" x:Name="MoreMenu" HorizontalAlignment="Left" Height="184" VerticalAlignment="Top" Width="219">
-                <Button Style="{DynamicResource MoreOpt}" Content="Mark as Done" Height="38" Canvas.Left="18" Canvas.Top="26" Width="187" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15" FontWeight="Bold"/>
-                <Button Style="{DynamicResource MoreOpt}" Content="Edit Task" Height="36" Canvas.Left="18" Canvas.Top="74" Width="187" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15" FontWeight="Bold"/>
-                <Button Style="{DynamicResource MoreOpt}" Content="Delete Task" Height="36" Canvas.Left="18" Canvas.Top="122" Width="187" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15" FontWeight="Bold"/>
+                <Button Style="{DynamicResource MoreOpt}" Content="Mark as Done" Height="38" Canvas.Left="18" Canvas.Top="26" Width="187" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15" FontWeight="Bold"  Click="Done_Button_Click"/>
+                <Button Style="{DynamicResource MoreOpt}" Content="Edit Task" Height="36" Canvas.Left="18" Canvas.Top="74" Width="187" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15" FontWeight="Bold" Click="Edit_Button_Click"/>
+                <Button Style="{DynamicResource MoreOpt}" Content="Delete Task" Height="36" Canvas.Left="18" Canvas.Top="122" Width="187" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15" FontWeight="Bold" Click="Delete_Button_Click"/>
             </Canvas>
         </Border>
 
