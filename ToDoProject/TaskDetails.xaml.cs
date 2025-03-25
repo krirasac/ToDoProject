@@ -84,6 +84,11 @@ namespace ToDoProject
 
         private void Delete_Button_Click(object sender, RoutedEventArgs e)
         {
+            Deleting();
+        }
+
+        public void Deleting()
+        {
             List<string> listToUpdate = null;
             int index = -1;
 
@@ -123,7 +128,12 @@ namespace ToDoProject
                     }
                 }
                 fm.RewriteSList();
-                MessageBox.Show($"Task '{taskName}' has been deleted.");
+
+                if (!deleteTrue)
+                {
+                    MessageBox.Show($"Task '{taskName}' has been deleted.");
+                }
+
                 ((Grid)this.Parent).Children.Remove(this);
 
             }
@@ -217,5 +227,16 @@ namespace ToDoProject
             }
         }
 
+        MainWindow main { get; set; }
+
+
+        public static bool deleteTrue = false;
+
+        private void Edit_Button_Click(object sender, RoutedEventArgs e)
+        {
+            deleteTrue = true;
+            parentPage.editTaskButon();
+            Deleting();
+        }
     }
 }

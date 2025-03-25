@@ -39,6 +39,7 @@ namespace ToDoProject
             }
         }
 
+        MainWindow main;
         private Page1 parentPage;
         public EditTask(Page1 parent)
         {
@@ -48,6 +49,8 @@ namespace ToDoProject
             CategoryCB.Items.Add("Personal");
             CategoryCB.Items.Add("Work");
         }
+
+       
 
         private string selectedPriority = "None";
 
@@ -65,8 +68,10 @@ namespace ToDoProject
             return uniqueName;
         }
 
+
         private void SaveBTN_Click(object sender, RoutedEventArgs e)
         {
+
             string name = NameInput.Text;
             DateTime deadline = DeadlinePicker.SelectedDate ?? DateTime.MinValue;
             DateTime dateOnly = deadline.Date;

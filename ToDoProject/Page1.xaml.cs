@@ -66,6 +66,11 @@ namespace ToDoProject
             main.MainGrid.Children.Add(new EditTask(this));
         }
 
+        public void editTaskButon()
+        {
+            main.MainGrid.Children.Add(new EditTask(this));
+        }
+
         private void ShowCompleteBTN_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
