@@ -24,15 +24,17 @@ namespace ToDoProject
         //for the dates in the stackpanel
         private List<Border> dateBorders = new List<Border>();
         private DateTime currentDate = DateTime.Today;
+        public MainWindow main { get; set; }
 
         //CHANGE THE FILE PATH BEFORE RUNNING THE CODE
         private string toDoList = "D:\\Krizia\\source\\repos\\ToDoProject\\ToDoProject\\Assets\\ToDoList.txt";
-        public Page3()
+        public Page3(MainWindow mainWin)
         {
             InitializeComponent();
             InitializeDateBorders();
             lbl_Month.Content = currentDate.ToString("MMMM");
             PopulateToDoList(currentDate, 1);
+            main = mainWin;
         }
 
         //start of dates in the stackpanel
@@ -352,12 +354,23 @@ namespace ToDoProject
 
         private void btn_AddTask_Click(object sender, RoutedEventArgs e)
         {
-            //navigate to other page
+            EditTask edit = new EditTask(this);
+            main.MainGrid.Children.Add(edit);
+            Grid.SetColumn(edit, 1);
+            main.PopBG.Visibility = Visibility.Visible;
+            edit.main = main;
+            edit.Prompt.Content = "Add Task";
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-            //navigate to other page
+            EditTask edit = new EditTask(this);
+            main.MainGrid.Children.Add(edit);
+            Grid.SetColumn(edit, 1);
+            main.PopBG.Visibility = Visibility.Visible;
+            edit.main = main;
+            edit.Prompt.Content = "Edit Task";
+
         }
     }
 }

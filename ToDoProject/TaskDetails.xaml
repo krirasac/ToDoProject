@@ -31,24 +31,24 @@
                     </Button.Background>
                 </Button>
 
-                <Border Style="{DynamicResource BorderWithShadowBlur}" Width="152" Height="158" Canvas.Left="150" Canvas.Top="218" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Border Style="{DynamicResource BorderWithShadowBlur}" Width="176" Height="158" Canvas.Left="126" Canvas.Top="218" HorizontalAlignment="Left" VerticalAlignment="Center">
                     <Canvas Style="{DynamicResource CanvaList}">
-                        <Image x:Name="ReminderIMG" Source="Assets/notification.png" Height="75" Canvas.Left="39" Canvas.Top="27" Width="74" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                        <Label Style="{DynamicResource Subtitles}" x:Name="DateTimeLB" Content="DateTime" Height="30" Width="80" HorizontalAlignment="Center" Canvas.Left="36" Canvas.Top="106" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="15" FontWeight="Bold"/>
+                        <Image x:Name="ReminderIMG" Source="Assets/notification.png" Height="76" Canvas.Left="51" Canvas.Top="26" Width="74" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <Label Style="{DynamicResource Subtitles}" x:Name="DateTimeLB" Content="DateTime" Height="30" Width="120" HorizontalAlignment="Left" Canvas.Left="28" Canvas.Top="106" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="15" FontWeight="Bold"/>
                     </Canvas>
                 </Border>
 
-                <Border Style="{DynamicResource BorderWithShadowBlur}" Width="152" Height="158" HorizontalAlignment="Center" Canvas.Left="352" VerticalAlignment="Top" Canvas.Top="217">
-                    <Canvas Style="{DynamicResource CanvaList}">
-                        <Image x:Name="CategoryIMG" Source="Assets/category.png" Height="74" Canvas.Left="39" Canvas.Top="27" Width="75" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                        <Label Style="{DynamicResource Subtitles}" x:Name="CategoryLB" Content="Category" Height="30" Width="80" Canvas.Left="36" Canvas.Top="105" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15" FontWeight="Bold"/>
+                <Border Style="{DynamicResource BorderWithShadowBlur}" Width="176" Height="158" HorizontalAlignment="Left" Canvas.Left="341" VerticalAlignment="Top" Canvas.Top="216">
+                    <Canvas Style="{DynamicResource CanvaList}" Margin="1,0,-1,0">
+                        <Image x:Name="CategoryIMG" Source="Assets/category.png" Height="74" Canvas.Left="51" Canvas.Top="26" Width="75" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                        <Label Style="{DynamicResource Subtitles}" x:Name="CategoryLB" Content="Category" Height="30" Width="118" Canvas.Left="29" Canvas.Top="105" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold"/>
                     </Canvas>
                 </Border>
 
-                <Border Style="{DynamicResource BorderWithShadowBlur}" Width="152" Height="158" HorizontalAlignment="Center" Canvas.Left="550" VerticalAlignment="Top" Canvas.Top="216">
+                <Border Style="{DynamicResource BorderWithShadowBlur}" Width="176" Height="158" HorizontalAlignment="Center" Canvas.Left="550" VerticalAlignment="Top" Canvas.Top="216">
                     <Canvas Style="{DynamicResource CanvaList}">
-                        <Image x:Name="PriorityIMG" Source="Assets/lowpriority.png" Height="74" Canvas.Left="39" Canvas.Top="27" Width="75" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                        <Label Style="{DynamicResource Subtitles}" x:Name="PriorityLB" Content="Priority" Height="30" Width="80" Canvas.Left="36" Canvas.Top="105" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15" FontWeight="Bold"/>
+                        <Image x:Name="PriorityIMG" Source="Assets/lowpriority.png" Height="74" Canvas.Left="51" Canvas.Top="27" Width="75" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <Label Style="{DynamicResource Subtitles}" x:Name="PriorityLB" Content="Priority" Height="30" Width="132" Canvas.Left="22" Canvas.Top="106" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="15" FontWeight="Bold"/>
                     </Canvas>
                 </Border>
             </Canvas>

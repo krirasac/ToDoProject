@@ -22,55 +22,58 @@ namespace ToDoProject
     {
         MainWindow main { get; set; }
         private FileManager fm = new FileManager();
-        public List<string> High = new List<string>();
-        public List<string> Medium = new List<string>();
-        public List<string> Low = new List<string>(); 
-        public List<string> done = new List<string>();
 
         public Page1(MainWindow main)
         {
             InitializeComponent();
             this.main = main;
-            fm = new FileManager();
             PopulateListBox();
         }
 
         private void PopulateListBox()
         {
-            High.Clear(); Medium.Clear(); Low.Clear();
+            fm.High.Clear(); fm.Medium.Clear(); fm.Low.Clear();
             for (int x = 0; x < fm.sList.Count(); x++)
             {
                 if (fm.sList[x][0] == "-")
                 {
                     if (fm.sList[x][5] == "High")
-                        High.Add(fm.sList[x][1]);
+                        fm.High.Add(fm.sList[x][1]);
                     else if (fm.sList[x][5] == "Medium")
-                        Medium.Add(fm.sList[x][1]);
+                        fm.Medium.Add(fm.sList[x][1]);
                     else if (fm.sList[x][5] == "Low")
-                        Low.Add(fm.sList[x][1]);
+                        fm.Low.Add(fm.sList[x][1]);
                 }
                 else if (fm.sList[x][0] == "+")
                 {
-                    done.Add(fm.sList[x][1]);
+                    fm.done.Add(fm.sList[x][1]);
                 }
             }
-            CompletedTasksList.ItemsSource = done;
-            HighPriorityList.ItemsSource = High;
-            MediumPriorityList.ItemsSource = Medium;
-            LowPriorityList.ItemsSource = Low;
+            CompletedTasksList.ItemsSource = fm.done;
+            HighPriorityList.ItemsSource = fm.High;
+            MediumPriorityList.ItemsSource = fm.Medium;
+            LowPriorityList.ItemsSource = fm.Low;
         }
 
         private void MedAddBTN_Click(object sender, RoutedEventArgs e)
         {
             EditTask edit = new EditTask(this);
             main.MainGrid.Children.Add(edit);
+            Grid.SetColumn(edit, 1);
             main.PopBG.Visibility = Visibility.Visible;
             edit.main = main;
+            edit.Prompt.Content = "Add Task";
         }
 
         public void editTaskButon()
         {
-            main.MainGrid.Children.Add(new EditTask(this));
+            EditTask edit = new EditTask(this);
+            main.MainGrid.Children.Add(edit);
+            Grid.SetColumn(edit, 1);
+            main.PopBG.Visibility = Visibility.Visible;
+            edit.main = main;
+            edit.Prompt.Content = "Edit";
+
         }
 
         private void ShowCompleteBTN_Click(object sender, RoutedEventArgs e)
@@ -109,10 +112,10 @@ namespace ToDoProject
             LowPriorityList.ItemsSource = null;
             CompletedTasksList.ItemsSource = null;
 
-            HighPriorityList.ItemsSource = High;
-            MediumPriorityList.ItemsSource = Medium;
-            LowPriorityList.ItemsSource = Low;
-            CompletedTasksList.ItemsSource = done;
+            HighPriorityList.ItemsSource = fm.High;
+            MediumPriorityList.ItemsSource = fm.Medium;
+            LowPriorityList.ItemsSource = fm.Low;
+            CompletedTasksList.ItemsSource = fm.done;
         }
 
         private void DoubleClick(object sender, MouseButtonEventArgs e)
@@ -165,8 +168,11 @@ namespace ToDoProject
                     }
                 }
 
-
-                main.MainGrid.Children.Add(new TaskDetails(this, fm, list[index][1], list[index][2], list[index][4], list[index][5], list[index][6]));
+                TaskDetails details = new TaskDetails(this, fm, list[index][1], list[index][2], list[index][6], list[index][5], list[index][4]);
+                main.MainGrid.Children.Add(details);
+                Grid.SetColumn(details, 1);
+                main.PopBG.Visibility = Visibility.Visible;
+                details.main = main;
             }
         }
 

@@ -25,13 +25,7 @@
             <Label Style="{DynamicResource Header}"  Content="LIST"  Margin="70,50,0,0" FontSize="24" FontWeight="Bold" Foreground="#FFF0F0F0" />
             <DockPanel x:Name="All" Height="50">
                 <Button Style="{DynamicResource NavBTN}" Content="ALL" x:Name="MW_All_Btn" Margin="70,5,0,5" HorizontalAlignment="Left" FontSize="20" Click="MW_All_Btn_Click"/>
-			</DockPanel>
-            <DockPanel x:Name="Personal" Height="50">
-                <Button Style="{DynamicResource NavBTN}" Content="PERSONAL" x:Name="MW_Personal_Btn"  Margin="70,5,0,5" HorizontalAlignment="Left" FontSize="20" Click="MW_Personal_Btn_Click"/>
-			</DockPanel>
-            <DockPanel x:Name="Work" Height="50">
-                <Button Style="{DynamicResource NavBTN}" Content="WORK" x:Name="MW_Work_Btn"  Margin="70,5,0,5" HorizontalAlignment="Left" FontSize="20" Click="MW_Work_Btn_Click"/>
-			</DockPanel>
+            </DockPanel>
             <Label Style="{DynamicResource Header}" Content="CALENDAR"  Margin="70,50,0,0" FontSize="24" FontWeight="Bold" Foreground="#FFF0F0F0" />
 
             <DockPanel x:Name="Weekly" Height="50">
@@ -43,7 +37,7 @@
         </StackPanel>
 
         <Image Source="/Assets/list.png" HorizontalAlignment="Left" Height="28" Margin="28,56,0,0" VerticalAlignment="Top" Width="26"/>
-        <Image Source="/Assets/calendar.png" HorizontalAlignment="Left" Height="29" Margin="28,293,0,0" VerticalAlignment="Top" Width="28"/>
+        <Image Source="/Assets/calendar.png" HorizontalAlignment="Left" Height="29" Margin="28,194,0,0" VerticalAlignment="Top" Width="28"/>
 
         <Border Style="{DynamicResource NavShadowBlur}" Grid.Column="1">
             <Frame x:Name="MainFrame" Width="1170" Height="800" NavigationUIVisibility="Hidden"/>

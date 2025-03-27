@@ -50,7 +50,25 @@ namespace ToDoProject
             CategoryCB.Items.Add("Work");
         }
 
-        private string selectedPriority = "None";
+        public EditTask(Page3 parent)
+        {
+            InitializeComponent();
+            CategoryCB.Items.Add("No Category");
+            CategoryCB.Items.Add("Personal");
+            CategoryCB.Items.Add("Work");
+        }
+
+        public EditTask(Page4 parent)
+        {
+            InitializeComponent();
+            CategoryCB.Items.Add("No Category");
+            CategoryCB.Items.Add("Personal");
+            CategoryCB.Items.Add("Work");
+        }
+
+
+
+        public string selectedPriority = "None";
 
         private FileManager fm = new FileManager();
 
@@ -58,7 +76,7 @@ namespace ToDoProject
         {
             int counter = 1;
             string uniqueName = taskName;
-            while (parentPage.High.Contains(uniqueName) || parentPage.Medium.Contains(uniqueName) || parentPage.Low.Contains(uniqueName) || parentPage.done.Contains(uniqueName))
+            while (fm.High.Contains(uniqueName) || fm.Medium.Contains(uniqueName) || fm.Low.Contains(uniqueName) || fm.done.Contains(uniqueName))
             {
                 uniqueName = $"{taskName} ({counter})";
                 counter++;
@@ -90,14 +108,14 @@ namespace ToDoProject
             fm.list.Add($"-|{newTask.Name}|11:59 PM|{formattedDate}|{newTask.Category}|{newTask.Priority}|{newTask.Description}");
             fm.WriteFile(fm.list);
             if (newTask.Priority == "High")
-                parentPage.High.Add(newTask.Name);
+                fm.High.Add(newTask.Name);
             else if (newTask.Priority == "Medium")
-                parentPage.Medium.Add(newTask.Name);
+                fm.Medium.Add(newTask.Name);
             else if (newTask.Priority == "Low")
-                parentPage.Low.Add(newTask.Name);
+                fm.Low.Add(newTask.Name);
 
-            parentPage.UpdateListBox();
             ((Grid)this.Parent).Children.Remove(this);
+            main.PopBG.Visibility = Visibility.Collapsed;
 
         }
 
@@ -121,15 +139,26 @@ namespace ToDoProject
 
         private void SetPriorityButtonStyles(Button selectedButton)
         {
-            LowBTN.Background = Brushes.LightGray;
-            MedBTN.Background = Brushes.LightGray;
-            HighBTN.Background = Brushes.LightGray;
-
-            selectedButton.Background = Brushes.LightBlue; // Highlight selected button
+           Button[] BTNList = new Button[] {LowBTN, MedBTN, HighBTN };
+            string[] BTNColor = new string[] { "#FF72ABA8", "#FFC99F32", "#FFCE533E" };
+            
+            for(int x = 0; x < BTNList.Length; x++)
+            { 
+                if(selectedButton != BTNList[x])
+                { 
+                    BTNList[x].Background = Brushes.LightGray;
+                }
+                else
+                {
+                    var convert = new BrushConverter();
+                    selectedButton.Background = (SolidColorBrush)convert.ConvertFromString(BTNColor[x]);
+                }
+            }
         }
 
         private void ExitTN_Click(object sender, RoutedEventArgs e)
         {
+            main.PopBG.Visibility = Visibility.Collapsed;
             ((Grid)this.Parent).Children.Remove(this);
         }
     }

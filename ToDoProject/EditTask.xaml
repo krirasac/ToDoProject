@@ -35,7 +35,7 @@
                 </Button>
                 <Button Style="{DynamicResource CancelBTN}" x:Name="DeleteBTN" Content="Delete" Height="50" Canvas.Left="364" Canvas.Top="506" Width="132" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="18" FontWeight="Bold"/>
                 <Button Style="{DynamicResource CompleteBTN}" x:Name="SaveBTN" Content="Save" Height="50" Canvas.Left="519" Canvas.Top="506" Width="132" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="18" FontWeight="Bold"  Click="SaveBTN_Click"/>
-                <Label Style="{DynamicResource Header}" Content="Add/Edit" Canvas.Left="55" Canvas.Top="60" Width="188" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold"/>
+                <Label x:Name="Prompt" Style="{DynamicResource Header}" Content="Add/Edit" Canvas.Left="55" Canvas.Top="60" Width="188" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold"/>
                 <Image Source="Assets/category.png" Height="33" Canvas.Left="64" Canvas.Top="267" Width="33" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="0.467,1.078"/>
                 <Image Source="Assets/calendar2.png"  Height="28" Canvas.Left="64" Canvas.Top="213" Width="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                 <Image Source="Assets/lowpriority.png" Height="33" Canvas.Left="64" Canvas.Top="338" Width="33" HorizontalAlignment="Center" VerticalAlignment="Top"/>

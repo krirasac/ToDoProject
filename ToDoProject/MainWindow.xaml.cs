@@ -22,7 +22,6 @@ namespace ToDoProject
     {
         public Button current;
         public Button previous { get; set; }
-
         public MainWindow()
         {
             InitializeComponent();
@@ -33,34 +32,40 @@ namespace ToDoProject
 
         private void MW_All_Btn_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new Page1(this));
+            Page1 all = new Page1(this);
+            MainFrame.Navigate(all);
+            all.CategoryLB.Content = "All Tasks";
             changeBG(sender);
             previous = sender as Button;
         }
 
         private void MW_Personal_Btn_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new Page1(this));
+            Page1 personal = new Page1(this);
+            MainFrame.Navigate(personal);
+            personal.CategoryLB.Content = "Personal";
             changeBG(sender);
             previous = sender as Button;
         }
         private void MW_Work_Btn_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new Page1(this));
+            Page1 work = new Page1(this);
+            MainFrame.Navigate(work);
+            work.CategoryLB.Content = "Work";
             changeBG(sender);
             previous = sender as Button;
         }
 
         private void MW_Wk_Btn_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new Page3());
+            MainFrame.Navigate(new Page3(this));
             changeBG(sender);
             previous = sender as Button;
         }
 
         private void MW_Mn_Btn_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new Page4());
+            MainFrame.Navigate(new Page4(this));
             changeBG(sender);
             previous = sender as Button;
         }

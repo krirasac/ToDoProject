@@ -6,10 +6,13 @@
 -|Team Meeting|10:00 AM|2025-03-25|Work|Medium|Description
 -|Prepare Presentation|2:00 PM|2025-03-26|Work|High|Description
 -|Submit Project Proposal|1:00 PM|2025-03-27|Work|High|Description
+-|Organize Desk|4:30 PM|2025-03-24|No Category|Low|Description
 -|Call Plumber|9:00 AM|2025-03-25|No Category|Medium|Description
 -|Renew Car Insurance|12:00 PM|2025-03-28|No Category|High|Description
 -|Schedule Doctor Appointment|10:00 AM|2025-03-29|No Category|Medium|Description
+-|Madam|11:59 PM|2025-03-29|Personal|Medium|Cool
+-|Task Name|11:59 PM|0001-01-01|No Category|None|Description
 -|Send Emails|11:59 PM|2025-03-28|Work|Low|Cool
 -|Wash the Car|11:59 PM|2025-04-02|Work|None|Im pretty sick of this
 -|Task Name|11:59 PM|0001-01-01|No Category|High|Description
--|Cool|11:59 PM|0001-01-01|Personal|None|Description
+-|Cool|11:59 PM|2025-03-28|Personal|Medium|Cool

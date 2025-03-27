@@ -13,6 +13,10 @@ namespace ToDoProject
     {
         public List<string> list = new List<string>();
         public List<string[]> sList= new List<string[]>();
+        public List<string> High = new List<string>();
+        public List<string> Medium = new List<string>();
+        public List<string> Low = new List<string>();
+        public List<string> done = new List<string>();
 
         public FileManager()
         {
@@ -66,6 +70,5 @@ namespace ToDoProject
                 }
             }
         }
-
     }
 }

@@ -24,6 +24,9 @@ namespace ToDoProject
     {
         bool openMenu = false;
         FileManager fm;
+        public MainWindow main { get; set; }
+        private Page1 parentPage;
+
         private string TN;
         private string DT;
         private string DS;
@@ -65,7 +68,7 @@ namespace ToDoProject
             }
             else
             {
-                BorderMore.Visibility= Visibility.Collapsed;
+                BorderMore.Visibility = Visibility.Collapsed;
                 openMenu = false;
             }
         }
@@ -80,11 +83,13 @@ namespace ToDoProject
         private void BackBTN_Click(object sender, RoutedEventArgs e)
         {
             ((Grid)this.Parent).Children.Remove(this);
+            main.PopBG.Visibility = Visibility.Collapsed;
         }
 
         private void Delete_Button_Click(object sender, RoutedEventArgs e)
         {
             Deleting();
+            main.PopBG.Visibility = Visibility.Collapsed;
         }
 
         public void Deleting()
@@ -95,22 +100,22 @@ namespace ToDoProject
             if (parentPage.LowPriorityList.SelectedItem != null)
             {
                 index = parentPage.LowPriorityList.SelectedIndex;
-                listToUpdate = parentPage.Low;
+                listToUpdate = fm.Low;
             }
             else if (parentPage.MediumPriorityList.SelectedItem != null)
             {
                 index = parentPage.MediumPriorityList.SelectedIndex;
-                listToUpdate = parentPage.Medium;
+                listToUpdate = fm.Medium;
             }
             else if (parentPage.HighPriorityList.SelectedItem != null)
             {
                 index = parentPage.HighPriorityList.SelectedIndex;
-                listToUpdate = parentPage.High;
+                listToUpdate = fm.High;
             }
             else if (parentPage.CompletedTasksList.SelectedItem != null)
             {
                 index = parentPage.CompletedTasksList.SelectedIndex;
-                listToUpdate = parentPage.done;
+                listToUpdate = fm.done;
             }
 
             if (index != -1 && listToUpdate != null && index < listToUpdate.Count)
@@ -139,8 +144,6 @@ namespace ToDoProject
             }
         }
 
-        private Page1 parentPage;
-
         private void Done_Button_Click(object sender, RoutedEventArgs e)
         {
             List<string> listToUpdate = null;
@@ -150,24 +153,24 @@ namespace ToDoProject
             if (parentPage.CompletedTasksList.SelectedItem != null)
             {
                 index = parentPage.CompletedTasksList.SelectedIndex;
-                listToUpdate = parentPage.done; 
+                listToUpdate = fm.done; 
             }
             else
             {
                 if (parentPage.LowPriorityList.SelectedItem != null)
                 {
                     index = parentPage.LowPriorityList.SelectedIndex;
-                    listToUpdate = parentPage.Low;
+                    listToUpdate = fm.Low;
                 }
                 else if (parentPage.MediumPriorityList.SelectedItem != null)
                 {
                     index = parentPage.MediumPriorityList.SelectedIndex;
-                    listToUpdate = parentPage.Medium;
+                    listToUpdate = fm.Medium;
                 }
                 else if (parentPage.HighPriorityList.SelectedItem != null)
                 {
                     index = parentPage.HighPriorityList.SelectedIndex;
-                    listToUpdate = parentPage.High;
+                    listToUpdate = fm.High;
                 }
             }
 
@@ -190,11 +193,11 @@ namespace ToDoProject
                     }
 
                     if (taskPriority == "Low")
-                        parentPage.Low.Add(taskName);
+                        fm.Low.Add(taskName);
                     else if (taskPriority == "Medium")
-                        parentPage.Medium.Add(taskName);
+                        fm.Medium.Add(taskName);
                     else if (taskPriority == "High")
-                        parentPage.High.Add(taskName);
+                        fm.High.Add(taskName);
 
                     for (int i = 0; i < fm.sList.Count; i++)
                     {
@@ -208,7 +211,7 @@ namespace ToDoProject
                 }
                 else
                 {
-                    parentPage.done.Add(taskName);
+                    fm.done.Add(taskName);
                     parentPage.UpdateListBox();
 
                     for (int i = 0; i < fm.sList.Count; i++)
@@ -223,20 +226,26 @@ namespace ToDoProject
                 }
                 fm.RewriteSList();
                 parentPage.UpdateListBox();
-                ((Grid)this.Parent).Children.Remove(this); 
+                ((Grid)this.Parent).Children.Remove(this);
+                main.PopBG.Visibility = Visibility.Collapsed;
             }
         }
-
-        MainWindow main { get; set; }
 
 
         public static bool deleteTrue = false;
 
         private void Edit_Button_Click(object sender, RoutedEventArgs e)
         {
-            Deleting();
-            deleteTrue = true;
-            parentPage.editTaskButon();
+            ((Grid)this.Parent).Children.Remove(this);
+            EditTask edit = new EditTask(parentPage);
+            edit.main = main;
+            main.MainGrid.Children.Add(edit);
+            Grid.SetColumn(edit, 1);
+
+            edit.NameInput.Text = TN;
+            edit.CategoryCB.Text = CT;
+            edit.DescriptionInput.Text = DT;
+            edit.selectedPriority = PR;
         }
     }
 }

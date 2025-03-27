@@ -25,11 +25,12 @@ namespace ToDoProject
         //CHANGE THE FILE PATH BEFORE RUNNING THE CODE
         private DateTime currentDate = DateTime.Today;
         private string toDoList = "D:\\Krizia\\source\\repos\\ToDoProject\\ToDoProject\\Assets\\ToDoList.txt";
-
-        public Page4()
+        public MainWindow main {  get; set; }
+        public Page4(MainWindow mainWin)
         {
             InitializeComponent();
             cal_ToDoCal.SelectedDate = currentDate; //selects the current date
+            main = mainWin;
         }
 
 
@@ -170,7 +171,12 @@ namespace ToDoProject
 
         private void btn_AddTask_Click(object sender, RoutedEventArgs e)
         {
-            //navigate to add task page
+            EditTask edit = new EditTask(this);
+            main.MainGrid.Children.Add(edit);
+            Grid.SetColumn(edit, 1);
+            main.PopBG.Visibility = Visibility.Visible;
+            edit.main = main;
+            edit.Prompt.Content = "Add Task";
         }
 
         private void TaskBorder_Click(object sender, RoutedEventArgs e)

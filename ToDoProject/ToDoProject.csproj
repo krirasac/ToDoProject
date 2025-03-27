@@ -193,5 +193,8 @@
   <ItemGroup>
     <Resource Include="Assets\calendar2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ToDoList - Copy.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
