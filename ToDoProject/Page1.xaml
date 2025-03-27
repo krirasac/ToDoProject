@@ -34,7 +34,7 @@
 
         <Border Style="{DynamicResource BorderWithShadowBlur}" Width="330" Height="521" Margin="420,224,420,59">
             <Canvas Style="{DynamicResource CanvaList}" x:Name="MediumPriority" HorizontalAlignment="Center" Height="521" VerticalAlignment="Center" Width="330">
-                <ListBox Style="{DynamicResource List}"  ItemContainerStyle="{DynamicResource ContainerStyle}" Height="355" Canvas.Left="22" Canvas.Top="123" Width="286" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalAlignment="Left" VerticalAlignment="Center" MouseDoubleClick="DoubleClick"/>
+                <ListBox  x:Name="MediumPriorityList" Style="{DynamicResource List}"  ItemContainerStyle="{DynamicResource ContainerStyle}" Height="355" Canvas.Left="22" Canvas.Top="123" Width="286" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalAlignment="Left" VerticalAlignment="Center" MouseDoubleClick="DoubleClick"/>
                 <Label Content="Medium" Height="48" Width="111" FontSize="25" VerticalContentAlignment="Center" Padding="5,5,5,5" Canvas.Left="43" Canvas.Top="36" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
                 <Button Style="{DynamicResource AddBTN}" x:Name="MedAddBTN" Height="40" Canvas.Left="264" Canvas.Top="40" Width="42" HorizontalAlignment="Left" VerticalAlignment="Center" Click="MedAddBTN_Click">
                     <Button.Background>
@@ -47,7 +47,7 @@
 
         <Border Style="{DynamicResource BorderWithShadowBlur}" Width="330" Height="521" Margin="778,224,62,59">
             <Canvas Style="{DynamicResource CanvaList}" x:Name="HighPriority" HorizontalAlignment="Center" Height="521" VerticalAlignment="Center" Width="330" Grid.RowSpan="2">
-                <ListBox Style="{DynamicResource List}"  ItemContainerStyle="{DynamicResource ContainerStyle}" d:ItemsSource="{d:SampleData ItemCount=5}" Height="355" Canvas.Left="21" Canvas.Top="118" Width="285" HorizontalAlignment="Center" VerticalAlignment="Center" MouseDoubleClick="DoubleClick"/>
+                <ListBox  x:Name="HighPriorityList" Style="{DynamicResource List}"  ItemContainerStyle="{DynamicResource ContainerStyle}" d:ItemsSource="{d:SampleData ItemCount=5}" Height="355" Canvas.Left="21" Canvas.Top="118" Width="285" HorizontalAlignment="Center" VerticalAlignment="Center" MouseDoubleClick="DoubleClick"/>
                 <Label Content="High" FontSize="25" VerticalContentAlignment="Center" Padding="5,5,5,5" Height="48" Canvas.Left="42" Canvas.Top="36" Width="71" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" />
                 <Button Style="{DynamicResource AddBTN}" x:Name="HighAddBTN" Height="40" Canvas.Left="264" Canvas.Top="40" Width="42" HorizontalAlignment="Left" VerticalAlignment="Center"  Click="MedAddBTN_Click">
                     <Button.Background>
@@ -59,7 +59,7 @@
         </Border>
         <Border x:Name="CompleteBorder" Style="{DynamicResource BorderWithShadowBlur}" Width="1048" Height="521" Margin="61,224,61,60" Visibility="Collapsed">
             <Canvas Style="{DynamicResource CanvaList}" x:Name="CompleteList" HorizontalAlignment="Center" Height="521" Margin="0,-1,0,0" VerticalAlignment="Top" Width="1048" Visibility="Collapsed">
-                <ListBox Style="{DynamicResource List}" ItemContainerStyle="{DynamicResource ContainerStyle}" Height="408" Canvas.Left="27" Canvas.Top="85" Width="993" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                <ListBox x:Name="CompletedTasksList" Style="{DynamicResource List}" ItemContainerStyle="{DynamicResource ContainerStyle}" Height="408" Canvas.Left="27" Canvas.Top="85" Width="993" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                 <Label Content="Completed" Height="49" Width="151" FontSize="25" FontWeight="Bold" VerticalContentAlignment="Center" Padding="5,5,5,5" HorizontalAlignment="Left" Canvas.Left="41" Canvas.Top="31" VerticalAlignment="Center"/>
                 <Label x:Name="CompleteCount" Style="{DynamicResource Counter}" Content="0" FontSize="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="40" Canvas.Left="197" Canvas.Top="36" VerticalAlignment="Top" Width="40"/>
             </Canvas>

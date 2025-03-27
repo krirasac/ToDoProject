@@ -63,12 +63,12 @@ namespace ToDoProject
 
         private void MedAddBTN_Click(object sender, RoutedEventArgs e)
         {
-            main.MainGrid.Children.Add(new EditTask(this));
+            main.MainGrid.Children.Add(new EditTask(main));
         }
 
         public void editTaskButon()
         {
-            main.MainGrid.Children.Add(new EditTask(this));
+            main.MainGrid.Children.Add(new EditTask(main));
         }
 
         private void ShowCompleteBTN_Click(object sender, RoutedEventArgs e)
@@ -164,7 +164,7 @@ namespace ToDoProject
                 }
 
 
-                main.MainGrid.Children.Add(new TaskDetails(this, fm, list[index][1], list[index][2], list[index][4], list[index][5], list[index][6]));
+                //main.MainGrid.Children.Add(new TaskDetails(this, fm, list[index][1], list[index][2], list[index][4], list[index][5], list[index][6]));
 
             }
         }
