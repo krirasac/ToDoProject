@@ -18,13 +18,13 @@
     <Grid>
         <Border Style="{DynamicResource PopupBorder}" HorizontalAlignment="Left" Height="416" VerticalAlignment="Top" Width="858" Margin="40,160,0,0">
             <Canvas Style="{DynamicResource CanvaList}" HorizontalAlignment="Left" Height="416" VerticalAlignment="Top" Width="858">
-                <Label Style="{DynamicResource Header}" Content="Task Name" Canvas.Left="129" Canvas.Top="35" HorizontalAlignment="Center" VerticalAlignment="Top" Width="575" Height="70" FontSize="36" VerticalContentAlignment="Center" FontWeight="Bold"/>
+                <Label x:Name="Name" Style="{DynamicResource Header}" Content="Task Name" Canvas.Left="129" Canvas.Top="35" HorizontalAlignment="Center" VerticalAlignment="Top" Width="575" Height="70" FontSize="36" VerticalContentAlignment="Center" FontWeight="Bold"/>
                 <Button Style="{DynamicResource BackBTN}" x:Name="BackBTN" Height="59" Canvas.Left="37" Canvas.Top="35" Width="62" HorizontalAlignment="Center" VerticalAlignment="Top" BorderBrush="Transparent" Click="BackBTN_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="/Assets/backarrow.png"/>
                     </Button.Background>
                 </Button>
-                <TextBlock Style="{DynamicResource SubText}" Height="76" Canvas.Left="138" TextWrapping="Wrap" Text="Description" Canvas.Top="109" Width="569" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                <TextBlock x:Name="Desc" Style="{DynamicResource SubText}" Height="76" Canvas.Left="138" TextWrapping="Wrap" Text="Description" Canvas.Top="109" Width="569" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                 <Button Style="{DynamicResource KebabBTN}" x:Name="MoreBTN" Height="59" Canvas.Left="780" Canvas.Top="35" Width="42" HorizontalAlignment="Left" VerticalAlignment="Top" Click="MoreBTN_Click" BorderBrush="Transparent">
                     <Button.Background>
                         <ImageBrush ImageSource="/Assets/kebab icon.png" Stretch="Uniform"/>
@@ -56,9 +56,9 @@
 
         <Border x:Name="BorderMore" Style="{DynamicResource BorderWithShadowBlur}" Width="219" Margin="867,126,54,502" Visibility="Collapsed">
             <Canvas Style="{DynamicResource CanvaList}" x:Name="MoreMenu" HorizontalAlignment="Left" Height="184" VerticalAlignment="Top" Width="219">
-                <Button Style="{DynamicResource MoreOpt}" Content="Mark as Done" Height="38" Canvas.Left="18" Canvas.Top="26" Width="187" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15" FontWeight="Bold"  Click="Done_Button_Click"/>
-                <Button Style="{DynamicResource MoreOpt}" Content="Edit Task" Height="36" Canvas.Left="18" Canvas.Top="74" Width="187" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15" FontWeight="Bold" Click="Edit_Button_Click"/>
-                <Button Style="{DynamicResource MoreOpt}" Content="Delete Task" Height="36" Canvas.Left="18" Canvas.Top="122" Width="187" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15" FontWeight="Bold" Click="Delete_Button_Click"/>
+                <Button x:Name="DoneButton" Style="{DynamicResource MoreOpt}" Content="Mark as Done" Height="38" Canvas.Left="18" Canvas.Top="26" Width="187" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15" FontWeight="Bold"  Click="Done_Button_Click"/>
+                <Button x:Name="EditButton" Style="{DynamicResource MoreOpt}" Content="Edit Task" Height="36" Canvas.Left="18" Canvas.Top="74" Width="187" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15" FontWeight="Bold" Click="Edit_Button_Click"/>
+                <Button x:Name="DeleteButton" Style="{DynamicResource MoreOpt}" Content="Delete Task" Height="36" Canvas.Left="18" Canvas.Top="122" Width="187" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15" FontWeight="Bold" Click="Delete_Button_Click"/>
             </Canvas>
         </Border>
 

@@ -33,7 +33,6 @@ namespace ToDoProject
             this.main = main;
             fm = new FileManager();
             PopulateListBox();
-
         }
 
         private void PopulateListBox()
@@ -63,12 +62,15 @@ namespace ToDoProject
 
         private void MedAddBTN_Click(object sender, RoutedEventArgs e)
         {
-            main.MainGrid.Children.Add(new EditTask(main));
+            EditTask edit = new EditTask(this);
+            main.MainGrid.Children.Add(edit);
+            main.PopBG.Visibility = Visibility.Visible;
+            edit.main = main;
         }
 
         public void editTaskButon()
         {
-            main.MainGrid.Children.Add(new EditTask(main));
+            main.MainGrid.Children.Add(new EditTask(this));
         }
 
         private void ShowCompleteBTN_Click(object sender, RoutedEventArgs e)
@@ -164,8 +166,7 @@ namespace ToDoProject
                 }
 
 
-                //main.MainGrid.Children.Add(new TaskDetails(this, fm, list[index][1], list[index][2], list[index][4], list[index][5], list[index][6]));
-
+                main.MainGrid.Children.Add(new TaskDetails(this, fm, list[index][1], list[index][2], list[index][4], list[index][5], list[index][6]));
             }
         }
 

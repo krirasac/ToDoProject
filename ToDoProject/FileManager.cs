@@ -33,7 +33,7 @@ namespace ToDoProject
         public void ReadFile()
         {
             list.Clear();
-            using (StreamReader sr = new StreamReader(@"C:\Users\Konmiho\Desktop\OOP Finals\Bananana.txt"))
+            using (StreamReader sr = new StreamReader(@"D:\Krizia\source\repos\ToDoProject\ToDoProject\Assets\ToDoList.txt"))
             {
                 string line;                
                 while ((line = sr.ReadLine()) != null)
@@ -45,7 +45,7 @@ namespace ToDoProject
 
         public void WriteFile(List<string> banana)
         {
-            using (StreamWriter sw = new StreamWriter(@"C:\Users\Konmiho\Desktop\OOP Finals\Bananana.txt"))
+            using (StreamWriter sw = new StreamWriter(@"D:\Krizia\source\repos\ToDoProject\ToDoProject\Assets\ToDoList.txt"))
             {
                 foreach (string line in banana)
                 {
@@ -57,7 +57,7 @@ namespace ToDoProject
 
         public void RewriteSList()
         {
-            using (StreamWriter sw = new StreamWriter(@"C:\Users\Konmiho\Desktop\OOP Finals\Bananana.txt"))
+            using (StreamWriter sw = new StreamWriter(@"D:\Krizia\source\repos\ToDoProject\ToDoProject\Assets\ToDoList.txt"))
             {
                 foreach (string[] task in sList)
                 {

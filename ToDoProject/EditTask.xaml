@@ -19,12 +19,12 @@
         <Border Style="{DynamicResource BorderWithShadowBlur}" HorizontalAlignment="Left"  VerticalAlignment="Center" Height="669" Width="872" Margin="106,0,0,0">
             <Canvas Style="{DynamicResource CanvaList}" Height="600" Margin="7,34,155,35">
                 <TextBox Style="{DynamicResource EditTaskName}" x:Name="NameInput" Text="Task Name" Canvas.Left="55" Canvas.Top="130" FontSize="18" Height="52" Width="596" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,0,0" IsHitTestVisible="True"/>
-                <TextBox Style="{DynamicResource EditTaskName}" x:Name="Description" Text="Description" Canvas.Left="55" Canvas.Top="404" FontSize="18" Height="78" Width="594" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,0,0"/>
+                <TextBox Style="{DynamicResource EditTaskName}" x:Name="DescriptionInput" Text="Description" Canvas.Left="55" Canvas.Top="404" FontSize="18" Height="78" Width="594" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,0,0"/>
                 <Label Content="Deadline" Canvas.Left="111" Canvas.Top="210" HorizontalAlignment="Center" VerticalAlignment="Top" Width="109" FontSize="20"/>
                 <Label Content="Category" Canvas.Left="111" Canvas.Top="265" HorizontalAlignment="Center" VerticalAlignment="Top" Width="109" FontSize="20"/>
                 <Label Content="Priority" Canvas.Left="111" Canvas.Top="334" HorizontalAlignment="Center" VerticalAlignment="Top" Width="109" FontSize="20"/>
                 <ComboBox x:Name="CategoryCB" Height="37" Canvas.Left="214" Canvas.Top="267" Width="435" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                <DatePicker Height="30" Canvas.Left="215" Canvas.Top="213" Width="434" HorizontalAlignment="Left" VerticalAlignment="Center" Background="#FFF0F0F0"/>
+                <DatePicker x:Name="DeadlinePicker" Height="30" Canvas.Left="215" Canvas.Top="213" Width="434" HorizontalAlignment="Left" VerticalAlignment="Center" Background="#FFF0F0F0"/>
                 <Button Style="{DynamicResource CompleteBTN}" x:Name="LowBTN" Content="Low" Height="37" Canvas.Left="234" Canvas.Top="334" Width="122" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Background="#FF72ABA8" Click="LowBTN_Click"/>
                 <Button Style="{DynamicResource CompleteBTN}" x:Name="MedBTN" Content="Medium" Height="37" Canvas.Left="377" Canvas.Top="334" Width="122" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Background="#FFC99F32" Click="MedBTN_Click"/>
                 <Button Style="{DynamicResource CompleteBTN}" x:Name="HighBTN" Content="High" Height="37" Canvas.Left="521" Canvas.Top="334" Width="122" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Background="#FFCE533E" Click="HighBTN_Click"/>

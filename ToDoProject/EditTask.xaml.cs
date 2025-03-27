@@ -39,7 +39,7 @@ namespace ToDoProject
             }
         }
 
-        MainWindow main;
+        public MainWindow main { get; set; }
         private Page1 parentPage;
         public EditTask(Page1 parent)
         {
@@ -49,8 +49,6 @@ namespace ToDoProject
             CategoryCB.Items.Add("Personal");
             CategoryCB.Items.Add("Work");
         }
-
-       
 
         private string selectedPriority = "None";
 
