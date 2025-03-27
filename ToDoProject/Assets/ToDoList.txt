@@ -1,4 +1,4 @@
-+|Buy Cat Food|6:00 PM|2025-03-24|Personal|High|The Kibbles one
+-|Buy Cat Food|6:00 PM|2025-03-24|Personal|High|The Kibbles one
 +|Give Cat Bath|4:00 PM|2025-03-24|Personal|Medium|Make sure to use the new soap
 -|Laundry|5:00 PM|2025-03-24|Personal|Medium|Description
 -|Buy Groceries|7:00 PM|2025-03-23|Personal|High|Description

@@ -244,7 +244,7 @@ namespace ToDoProject
 
             edit.NameInput.Text = TN;
             edit.CategoryCB.Text = CT;
-            edit.DescriptionInput.Text = DT;
+            edit.DescriptionInput.Text = DS;
             edit.selectedPriority = PR;
         }
     }
